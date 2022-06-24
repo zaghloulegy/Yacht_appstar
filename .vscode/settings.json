@@ -1,0 +1,8 @@
+{
+  "files.autoSave": "afterDelay",
+"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+"turboConsoleLog.quote": "\"",
+"editor.tabSize": 2,
+"javascript.preferences.quoteStyle": "single",
+"typescript.preferences.quoteStyle": "single"
+}
