@@ -1,0 +1,38 @@
+{
+  "name": "yacht_appstar",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "prepare": "husky install && npm run prepare",
+    "lint": "eslint ./"
+  },
+  "dependencies": {
+    "expo": "~45.0.0",
+    "expo-status-bar": "~1.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-web": "0.17.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.66.13",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-config-google": "^0.14.0",
+    "husky": "^8.0.1",
+    "typescript": "~4.3.5"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
