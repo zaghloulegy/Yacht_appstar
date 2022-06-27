@@ -1,0 +1,7 @@
+{
+  "dev": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "/home/zag/.amplify/awscloudformation/QKP3qSqrMC"
+  }
+}
