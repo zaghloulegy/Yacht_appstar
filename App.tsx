@@ -1,10 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {StatusBar} from 'expo-status-bar';
+import {StyleSheet, View} from 'react-native';
 
+import {Authenticator} from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+
+// eslint-disable-next-line require-jsdoc
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Authenticator hideDefault={true}/>
       <StatusBar style="auto" />
     </View>
   );
