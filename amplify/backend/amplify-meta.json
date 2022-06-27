@@ -1,0 +1,58 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-yachtappstar-dev-94434-authRole",
+      "UnauthRoleArn": "arn:aws:iam::359949482020:role/amplify-yachtappstar-dev-94434-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::359949482020:role/amplify-yachtappstar-dev-94434-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-yachtappstar-dev-94434-deployment",
+      "UnauthRoleName": "amplify-yachtappstar-dev-94434-unauthRole",
+      "StackName": "amplify-yachtappstar-dev-94434",
+      "StackId": "arn:aws:cloudformation:eu-west-2:359949482020:stack/amplify-yachtappstar-dev-94434/5edfa330-f5f5-11ec-a5ba-0645894bcfe2",
+      "AmplifyAppId": "dpsneiak8cpfh"
+    }
+  },
+  "auth": {
+    "yachtappstar6211f4e0": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-yachtappstar-dev-94434-deployment/amplify-cfn-templates/auth/yachtappstar6211f4e0-cloudformation-template.json",
+        "logicalId": "authyachtappstar6211f4e0"
+      },
+      "lastPushTimeStamp": "2022-06-27T10:22:26.554Z",
+      "output": {
+        "UserPoolId": "eu-west-2_y4h5f4qYQ",
+        "AppClientIDWeb": "714m3gf40uiq2gtbj54ajtgnhj",
+        "AppClientID": "74s1m0nbhk9a5lomaaue62earb",
+        "IdentityPoolId": "eu-west-2:6a3f822a-f05a-4f93-bd72-be5e5bccc763",
+        "UserPoolArn": "arn:aws:cognito-idp:eu-west-2:359949482020:userpool/eu-west-2_y4h5f4qYQ",
+        "IdentityPoolName": "yachtappstar6211f4e0_identitypool_6211f4e0__dev",
+        "UserPoolName": "yachtappstar6211f4e0_userpool_6211f4e0"
+      },
+      "lastPushDirHash": "1gAzL7G3brLnKjc9Tkt60c57B1Q="
+    }
+  }
+}
