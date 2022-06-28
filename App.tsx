@@ -1,16 +1,15 @@
 import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, View} from 'react-native';
-
-import {Authenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import Loading from './src/components/Loading';
 
 
 // eslint-disable-next-line require-jsdoc
 export default function App() {
   return (
     <View style={styles.container}>
-      <Authenticator hideDefault={true}/>
       <StatusBar style="auto" />
+      <Loading />
     </View>
   );
 }
@@ -18,7 +17,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#1D3557',
     alignItems: 'center',
     justifyContent: 'center',
   },
