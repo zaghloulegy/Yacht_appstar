@@ -9,11 +9,12 @@ const AddVessel = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#1D3557'
       }
     }>
-      <Text>Add Vessel</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Add Vessel</Text>
 
-      <TextInput placeholder='MMSI Number'/>
+      <TextInput style={{backgroundColor:'#F1FAEE',padding:2}} placeholder='MMSI Number' placeholderTextColor="black"/>
       <Button title="Submit"></Button>
       <Footer />
     </View>

@@ -9,9 +9,10 @@ const Profile = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#1D3557'
       }
     }>
-      <Text>Profile</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Profile</Text>
       <Button title='Delete Profile'></Button>
       <Footer />
     </View>

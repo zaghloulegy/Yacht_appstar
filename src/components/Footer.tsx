@@ -1,7 +1,8 @@
-import {View, Button, Modal} from 'react-native';
+import {View, Button, Modal, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
+import { Ionicons } from '@expo/vector-icons';
 
 type StackParamList = {
   navigate: any;
@@ -24,8 +25,9 @@ const Footer = () => {
         flex: 1,
       }
     }>
-      
-      <Button title="menu" onPress={() => setMenuOpen(true)}></Button>
+      <TouchableOpacity onPress={() => setMenuOpen(true)}>
+        <Ionicons name="menu" size={24} color="#A8DADC" />
+      </TouchableOpacity>
 
       <Modal visible={menuOpen}>
         <View>
