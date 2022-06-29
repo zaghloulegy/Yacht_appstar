@@ -1,7 +1,14 @@
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+
+type StackParamList = {
+  navigate: any;
+};
 
 const Voyages = () => {
+  const navigation = useNavigation<StackParamList>();
+
   return (
     <View style={
       {flexDirection: 'column',
@@ -10,10 +17,6 @@ const Voyages = () => {
         flex: 1,
       }
     }>
-      <Text style={{
-        fontSize: 20,
-        color: '#ffffff',
-      }}>Your-Fleet</Text>
     </View>
   );
 };

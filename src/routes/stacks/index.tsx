@@ -15,14 +15,14 @@ const {Navigator, Screen} = createNativeStackNavigator();
 
 const StackPile = () => {
   return (
-    <Navigator screenOptions={{HeaderShown: false}} initialRouteName='Your Fleet'>
+    <Navigator initialRouteName='Your Fleet'>
       <Screen name='Your Fleet' component={YourFleet}/>
       <Screen name='Voyages' component={Voyages}/>
       <Screen name='Vessel' component={Vessel}/>
       <Screen name='Sign In' component={SignIn}/>
       <Screen name='Profile' component={Profile}/>
       <Screen name='Nav Log' component={NavLog}/>
-      <Screen name='In Command' component={InCommand}/>
+      <Screen name='In Command' component={InCommand} options={{headerShown:false}}/>
       <Screen name='Front Page' component={FrontPage}/>
       <Screen name='Add Vessel' component={AddVessel}/>
     </Navigator>

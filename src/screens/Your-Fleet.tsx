@@ -1,10 +1,13 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Button} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
+type StackParamList = {
+  navigate: any;
+};
 
 const YourFleet = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackParamList>();
 
   return (
     <View style={
@@ -14,19 +17,14 @@ const YourFleet = () => {
         flex: 1,
       }
     }>
-      <Text style={{
-        fontSize: 20,
-        color: '#ffffff',
-      }}>Your-Fleet</Text>
+
       <TouchableOpacity style={{
-        fontSize: 20,
-        color: '#ffffff',
         backgroundColor: '#457B9D',
         marginTop: 12,
         padding: 8,
         borderRadius: 5,
       }} onPress={()=> navigation.navigate('Vessel')}>
-        <Text >A Vessel</Text>
+        <Text style={{fontSize: 20, color: '#ffffff',}}>A Vessel</Text>
       </TouchableOpacity>
     </View>
   );
