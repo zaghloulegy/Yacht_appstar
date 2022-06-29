@@ -1,5 +1,6 @@
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import React from 'react';
+import Footer from '../components/Footer';
 
 const NavLog = () => {
   return (
@@ -10,10 +11,9 @@ const NavLog = () => {
         flex: 1,
       }
     }>
-      <Text style={{
-        fontSize: 20,
-        color: '#ffffff',
-      }}>Your-Fleet</Text>
+      <Text>Nav Log</Text>
+      <Button title='Export Nav Log'></Button>
+      <Footer />
     </View>
   );
 };

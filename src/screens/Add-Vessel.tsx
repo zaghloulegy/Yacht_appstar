@@ -1,5 +1,6 @@
-import {View, Text} from 'react-native';
+import {View, Text, Button, TextInput} from 'react-native';
 import React from 'react';
+import Footer from '../components/Footer';
 
 const AddVessel = () => {
   return (
@@ -10,10 +11,11 @@ const AddVessel = () => {
         flex: 1,
       }
     }>
-      <Text style={{
-        fontSize: 20,
-        color: '#ffffff',
-      }}>Your-Fleet</Text>
+      <Text>Add Vessel</Text>
+
+      <TextInput placeholder='MMSI Number'/>
+      <Button title="Submit"></Button>
+      <Footer />
     </View>
   );
 };
