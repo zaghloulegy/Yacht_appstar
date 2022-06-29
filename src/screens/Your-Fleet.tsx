@@ -2,6 +2,7 @@ import {View, Text, TouchableOpacity, Button} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
+import { Entypo } from '@expo/vector-icons';
 
 type StackParamList = {
   navigate: any;
@@ -16,9 +17,10 @@ const YourFleet = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#1D3557',
       }
     }>
-      <Text>Your Fleet</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Your Fleet</Text>
 
       <TouchableOpacity style={{
         backgroundColor: '#457B9D',
@@ -29,8 +31,9 @@ const YourFleet = () => {
         <Text style={{fontSize: 20, color: '#ffffff',}}>A Vessel</Text>
       </TouchableOpacity>
 
-      <Button title="+" onPress={() => navigation.navigate('Add Vessel')}></Button>
-
+      <TouchableOpacity onPress={() => navigation.navigate('Add Vessel')}>
+        <Entypo name="plus" size={24} color="#A8DADC" />
+      </TouchableOpacity>
       <Footer />
     </View>
   );

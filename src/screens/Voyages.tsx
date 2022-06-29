@@ -16,9 +16,10 @@ const Voyages = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#1D3557'
       }
     }>
-      <Text>Voyages</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Voyages</Text>
       
       <Button title="Latest Nav Log" onPress={() => navigation.navigate('Nav Log')}></Button>
       <Footer />

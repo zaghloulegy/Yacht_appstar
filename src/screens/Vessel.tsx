@@ -17,9 +17,10 @@ const Vessel = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#1D3557'
       }
     }>
-      <Text>Vessel</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Vessel</Text>
       <Button title="At Sea"></Button>
       <Button title="In Command" onPress={() => navigation.navigate('In Command')}></Button>
     

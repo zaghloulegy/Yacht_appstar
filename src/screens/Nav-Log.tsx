@@ -9,9 +9,10 @@ const NavLog = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#1D3557'
       }
     }>
-      <Text>Nav Log</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Nav Log</Text>
       <Button title='Export Nav Log'></Button>
       <Footer />
     </View>
