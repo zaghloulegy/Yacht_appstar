@@ -1,5 +1,5 @@
 {
-  "providers": {
+  "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-yachtappstar-dev-14546-authRole",
       "UnauthRoleArn": "arn:aws:iam::359949482020:role/amplify-yachtappstar-dev-14546-unauthRole",
