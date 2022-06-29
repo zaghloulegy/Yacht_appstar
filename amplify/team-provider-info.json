@@ -10,6 +10,11 @@
       "StackName": "amplify-yachtappstar-dev-14546",
       "StackId": "arn:aws:cloudformation:eu-west-2:359949482020:stack/amplify-yachtappstar-dev-14546/d09cda60-f744-11ec-b179-0a9f1be9c774",
       "AmplifyAppId": "d32bil7utshtpx"
+    },
+    "categories": {
+      "auth": {
+        "yachtappstar21efa9ef": {}
+      }
     }
   }
 }
