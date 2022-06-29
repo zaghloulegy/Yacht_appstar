@@ -13,7 +13,6 @@ Amplify.configure(awsconfig);
 const App = (props: any) => {
   const user: any = props.user;
   const signOut: any = props.signOut;
-
   return (
     <>
       <Routes/>
@@ -39,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default withAuthenticator(App);
