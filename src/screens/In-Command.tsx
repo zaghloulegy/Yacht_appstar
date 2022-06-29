@@ -17,6 +17,8 @@ const InCommand = () => {
         flex: 1,
       }
     }>
+
+      <Button title="Relinquish Command" onPress={() => navigation.navigate('Vessel')}></Button>
     </View>
   );
 };
