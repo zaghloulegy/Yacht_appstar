@@ -13,13 +13,14 @@ import YourFleet from '../../screens/Your-Fleet';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
-const StackPile = () => {
+const StackPile = (setLogIn: any) => {
+  console.log(setLogIn, 'stack')
   return (
     <Navigator initialRouteName='Front Page'>
       <Screen name='Your Fleet' component={YourFleet} options={{headerShown:false}}/>
       <Screen name='Voyages' component={Voyages} options={{headerShown:false}}/>
       <Screen name='Vessel' component={Vessel} options={{headerShown:false}}/>
-      <Screen name='Sign In' component={SignIn}/>
+      <Screen name='Sign In' component={SignIn} options={{headerShown:false}}/>
       <Screen name='Profile' component={Profile} options={{headerShown:false}}/>
       <Screen name='Nav Log' component={NavLog} options={{headerShown:false}}/>
       <Screen name='In Command' component={InCommand} options={{headerShown:false}}/>

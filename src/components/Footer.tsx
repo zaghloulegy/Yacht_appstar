@@ -4,6 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
+import {UserContext} from '../contexts/User';
+import {useContext} from 'react';
 
 type StackParamList = {
   navigate: any;
@@ -12,11 +14,17 @@ type StackParamList = {
 const Footer = () => {
   const navigation = useNavigation<StackParamList>();
   const [menuOpen, setMenuOpen] = useState(false);
+  // const {signOut} = useContext(UserContext);
 
   const handleButtonPress = (destination: string) => {
     setMenuOpen(false);
     navigation.navigate(destination);
-  }
+  };
+
+  const handleSignOut = () => {
+    // signOut();
+    navigation.navigate('Front Page');
+  };
 
   return (
     <View style={
@@ -47,7 +55,7 @@ const Footer = () => {
           </TouchableOpacity>
         </View>
         <View style={footer.view}>
-          <TouchableOpacity onPress={() => ('')} style={footer.touchable}>
+          <TouchableOpacity onPress={() => handleSignOut()} style={footer.touchable}>
           <Text>Sign Out</Text>
           </TouchableOpacity>
         </View>

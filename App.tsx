@@ -1,21 +1,32 @@
 import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, View} from 'react-native';
+import {useEffect, useState} from 'react';
 import '@aws-amplify/ui-react/styles.css';
-import Loading from './src/components/Loading';
-import {Amplify} from 'aws-amplify';
+import {Amplify, API } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
-import {withAuthenticator} from '@aws-amplify/ui-react';
 import Routes from './src/routes';
+import {UserContext} from './src/contexts/User';
+
 
 Amplify.configure(awsconfig);
 
 // eslint-disable-next-line require-jsdoc
-const App = (props: any) => {
-  const user: any = props.user;
-  const signOut: any = props.signOut;
+const App = () => {
+  const [logIn, setLogIn] = useState('');
+
+  let sampleUserContext: any;
+
+  useEffect(() => {
+    sampleUserContext = {
+      signOut: logIn,
+    }
+  }, [logIn])
+
   return (
     <>
-      <Routes/>
+    <UserContext.Provider value={sampleUserContext}>
+      <Routes setLogIn={setLogIn}/>
+    </UserContext.Provider>
       {/* <View style={styles.container}>
         <StatusBar style="auto" />
         <Loading />
@@ -38,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withAuthenticator(App);
+export default App;
