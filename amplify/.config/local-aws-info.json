@@ -1,7 +1,7 @@
 {
   "dev": {
     "configLevel": "project",
-    "useProfile": false,
-    "awsConfigFilePath": "/home/marko/.amplify/awscloudformation/97yuqLN7td"
+    "useProfile": true,
+    "profileName": "default"
   }
 }
