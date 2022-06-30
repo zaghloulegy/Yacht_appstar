@@ -1,10 +1,11 @@
 import {NavigationContainer} from '@react-navigation/native';
 import Stack from './stacks';
 
-const Routes = () => {
+const Routes = (setLogIn:any) => {
+  console.log(setLogIn, 'route')
   return (
     <NavigationContainer>
-      <Stack/>
+      <Stack setLogIn={setLogIn}/>
     </NavigationContainer>
   );
 };

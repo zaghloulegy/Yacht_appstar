@@ -1,5 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
+import {withAuthenticator} from '@aws-amplify/ui-react';
 
 const SignIn = () => {
   return (
@@ -10,12 +11,9 @@ const SignIn = () => {
         flex: 1,
       }
     }>
-      <Text style={{
-        fontSize: 20,
-        color: '#ffffff',
-      }}>Your-Fleet</Text>
+      
     </View>
   );
 };
 
-export default SignIn;
+export default withAuthenticator(SignIn);
