@@ -4,45 +4,15 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type BlogMetaData = {
+type VesselMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type PostMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type CommentMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-export declare class Blog {
+export declare class Vessel {
   readonly id: string;
-  readonly name: string;
-  readonly posts?: (Post | null)[] | null;
+  readonly mmsi: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Blog, BlogMetaData>);
-  static copyOf(source: Blog, mutator: (draft: MutableModel<Blog, BlogMetaData>) => MutableModel<Blog, BlogMetaData> | void): Blog;
-}
-
-export declare class Post {
-  readonly id: string;
-  readonly title: string;
-  readonly blog?: Blog | null;
-  readonly comments?: (Comment | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Post, PostMetaData>);
-  static copyOf(source: Post, mutator: (draft: MutableModel<Post, PostMetaData>) => MutableModel<Post, PostMetaData> | void): Post;
-}
-
-export declare class Comment {
-  readonly id: string;
-  readonly post?: Post | null;
-  readonly content: string;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Comment, CommentMetaData>);
-  static copyOf(source: Comment, mutator: (draft: MutableModel<Comment, CommentMetaData>) => MutableModel<Comment, CommentMetaData> | void): Comment;
+  constructor(init: ModelInit<Vessel, VesselMetaData>);
+  static copyOf(source: Vessel, mutator: (draft: MutableModel<Vessel, VesselMetaData>) => MutableModel<Vessel, VesselMetaData> | void): Vessel;
 }
