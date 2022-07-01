@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const clearData = async () => {
-  try{
+  try {
     const allKeys = await AsyncStorage.getAllKeys();
-    let filterKeys = allKeys.filter((key) => {
-      return  key.includes('vessel');
-    })
+    const filterKeys = allKeys.filter((key) => {
+      return key.includes('vessel');
+    });
     await AsyncStorage.multiRemove(allKeys);
   } catch (err) {
     console.log('err: ', err);
