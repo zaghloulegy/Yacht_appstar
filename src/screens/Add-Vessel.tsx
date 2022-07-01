@@ -16,12 +16,13 @@ type StackParamList = {
 
 const vessel: VesselInterface = {mmsi: '', name: ''};
 
-const AddVessel = () => {
+const AddVessel = (props: any) => {
   const navigation = useNavigation<StackParamList>();
 
   const handleAddVessel = async (event: any) => {
 
     if(/\d+/.test(event.target.value)) {
+    props.route.params.addVessel(true);
     vessel.mmsi = event.target.value;
     try {
       const vesselStringify = JSON.stringify(vessel);

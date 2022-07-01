@@ -17,7 +17,7 @@ let initialRenderVessels: any;
 const YourFleet = () => {
   const navigation = useNavigation<StackParamList>();
   const [vessels, setVessels] = useState(initialRenderVessels);
-  const [render, setRender] = useState(true);
+  const [addVessel, setAddVessel] = useState(false);
   
 
   useEffect(() => {
@@ -28,12 +28,13 @@ const YourFleet = () => {
           return  key.includes('vessel');
         })
         let allVessels = await AsyncStorage.multiGet(filterKeys);
-        initialRenderVessels = allVessels;
+        setVessels(allVessels);
       } catch (err) {
         console.log('err: ', err);
       }
     };
-  }, [render])
+    renderVessels();
+  }, [addVessel])
 
   return (
     <View style={
@@ -47,7 +48,7 @@ const YourFleet = () => {
       <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Your Fleet</Text>
 
       
-      {vessels.map((vessel: any) => {
+      {vessels?vessels.map((vessel: any) => {
         const individualMMSI = JSON.parse(vessel[1]).mmsi
         const individualName = JSON.parse(vessel[1]).name
         return (
@@ -57,9 +58,9 @@ const YourFleet = () => {
           </TouchableOpacity>
           </View>
         )
-      })}
+      }):<></>}
 
-      <TouchableOpacity onPress={() => navigation.navigate('Add Vessel')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Add Vessel', {'addVessel':setAddVessel})}>
         <Entypo name="plus" size={24} color="#A8DADC" />
       </TouchableOpacity>
 
