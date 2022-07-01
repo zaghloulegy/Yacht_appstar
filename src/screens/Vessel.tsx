@@ -8,9 +8,8 @@ type StackParamList = {
   navigate: any;
 };
 
-const Vessel = () => {
+const Vessel = (props:any) => {
   const navigation = useNavigation<StackParamList>();
-
   return (
     <View style={
       {flexDirection: 'column',
@@ -20,7 +19,7 @@ const Vessel = () => {
         backgroundColor: '#1D3557'
       }
     }>
-      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Vessel</Text>
+      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Vessel: {props.route.params.mmsi}</Text>
       <Button title="At Sea"></Button>
       <Button title="In Command" onPress={() => navigation.navigate('In Command')}></Button>
     

@@ -5,28 +5,16 @@ import '@aws-amplify/ui-react/styles.css';
 import {Amplify, API } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import Routes from './src/routes';
-import {UserContext} from './src/contexts/User';
 
 
 Amplify.configure(awsconfig);
 
 // eslint-disable-next-line require-jsdoc
 const App = () => {
-  const [logIn, setLogIn] = useState('');
-
-  let sampleUserContext: any;
-
-  useEffect(() => {
-    sampleUserContext = {
-      signOut: logIn,
-    }
-  }, [logIn])
 
   return (
     <>
-    <UserContext.Provider value={sampleUserContext}>
-      <Routes setLogIn={setLogIn}/>
-    </UserContext.Provider>
+      <Routes />
       {/* <View style={styles.container}>
         <StatusBar style="auto" />
         <Loading />
