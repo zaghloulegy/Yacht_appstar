@@ -24,7 +24,6 @@ const YourFleet = () => {
     const renderVessels = async () => {
       try{
         setAddVessel(false);
-        console.log(1)
         const allKeys = await AsyncStorage.getAllKeys();
         let filterKeys = allKeys.filter((key) => {
           return  key.includes('vessel');

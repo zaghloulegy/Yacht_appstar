@@ -1,4 +1,4 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
@@ -6,8 +6,28 @@ type StackParamList = {
   navigate: any;
 };
 
-const InCommand = () => {
+type RelinquishCommand = {
+  relinquish_command: number;
+}
+
+const InCommand = (props: any) => {
   const navigation = useNavigation<StackParamList>();
+
+  console.log(props.route.params)
+
+  const handleRelinquishCommand = async () => {
+    const relinquishInCommand: number = Date.now();
+      const newRelinquishCommand: RelinquishCommand = {
+        relinquish_command: relinquishInCommand,
+      };
+      try {
+        console.log('newRelinquishCommand: ', newRelinquishCommand);
+        //await AsyncStorage.mergeItem(`voyage:${startTimestamp}`, JSON.stringify(newRelinquishCommand));
+        navigation.navigate('Vessel', {'mmsi': props.route.params.mmsi});
+      } catch (err) {
+        console.log(err);
+      }
+  }
 
   return (
     <View style={
@@ -18,8 +38,9 @@ const InCommand = () => {
         backgroundColor: 'black'
       }
     }>
-
-      <Button title="Relinquish Command" onPress={() => navigation.navigate('Vessel')}></Button>
+      <TouchableOpacity onPress={handleRelinquishCommand}>
+        <Text style={{color:'white'}}>Relinquish Command</Text>
+      </TouchableOpacity>
     </View>
   );
 };
