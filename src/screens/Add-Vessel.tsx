@@ -20,21 +20,20 @@ const AddVessel = (props: any) => {
   const navigation = useNavigation<StackParamList>();
 
   const handleAddVessel = async (event: any) => {
-
-    if(/\d+/.test(event.target.value)) {
-    props.route.params.addVessel(true);
-    vessel.mmsi = event.target.value;
-    try {
-      const vesselStringify = JSON.stringify(vessel);
-      await AsyncStorage.setItem(`vessel:${vessel.mmsi}`, vesselStringify);
-    } catch (err) {
-      console.log('err: ', err);
-    }
-    navigation.navigate('Your Fleet');
+    if (/\d+/.test(event.target.value)) {
+      props.route.params.addVessel(true);
+      vessel.mmsi = event.target.value;
+      try {
+        const vesselStringify = JSON.stringify(vessel);
+        await AsyncStorage.setItem(`vessel:${vessel.mmsi}`, vesselStringify);
+      } catch (err) {
+        console.log('err: ', err);
+      }
+      navigation.navigate('Your Fleet');
     }
   };
 
-  
+
   return (
     <View style={
       {flexDirection: 'column',
