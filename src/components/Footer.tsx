@@ -4,8 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
-import {UserContext} from '../contexts/User';
-import {useContext} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 type StackParamList = {
   navigate: any;
@@ -14,15 +14,18 @@ type StackParamList = {
 const Footer = () => {
   const navigation = useNavigation<StackParamList>();
   const [menuOpen, setMenuOpen] = useState(false);
-  // const {signOut} = useContext(UserContext);
 
   const handleButtonPress = (destination: string) => {
     setMenuOpen(false);
     navigation.navigate(destination);
   };
 
-  const handleSignOut = () => {
-    // signOut();
+  const handleSignOut = async () => {
+    const allKeys = await AsyncStorage.getAllKeys();
+    let filterKeys = allKeys.filter((key) => {
+      return  key.includes('CognitoIdentityServiceProvider');
+    })
+    await AsyncStorage.multiRemove(filterKeys);
     navigation.navigate('Front Page');
   };
 

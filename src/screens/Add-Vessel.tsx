@@ -16,9 +16,8 @@ type StackParamList = {
 
 const vessel: VesselInterface = {mmsi: '', name: ''};
 
-const AddVessel = (props: any) => {
+const AddVessel = () => {
   const navigation = useNavigation<StackParamList>();
-  console.log(props, 'props')
 
   const handleAddVessel = async (event: any) => {
 
