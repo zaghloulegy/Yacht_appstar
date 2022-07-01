@@ -3,25 +3,34 @@ import {View, Text, TextInput} from 'react-native';
 import React, {useState} from 'react';
 import Footer from '../components/Footer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 
 interface VesselInterface {
-  mmsi: number;
+  mmsi: string;
   name: string;
-}
-const vessel: VesselInterface = {mmsi: 0, name: ''};
+};
 
-const AddVessel = () => {
-  const [newVessel, setNewVessel]= useState(vessel);
+type StackParamList = {
+  navigate: any;
+};
+
+const vessel: VesselInterface = {mmsi: '', name: ''};
+
+const AddVessel = (props: any) => {
+  const navigation = useNavigation<StackParamList>();
+  console.log(props, 'props')
 
   const handleAddVessel = async (event: any) => {
+
+    if(/\d+/.test(event.target.value)) {
     vessel.mmsi = event.target.value;
-    setNewVessel(vessel);
     try {
-      const vesselStringify = JSON.stringify(newVessel);
-      await AsyncStorage.setItem(`${newVessel.mmsi}`, vesselStringify);
-      console.log('out of storage', AsyncStorage.getItem(`${newVessel.mmsi}`));
+      const vesselStringify = JSON.stringify(vessel);
+      await AsyncStorage.setItem(`vessel:${vessel.mmsi}`, vesselStringify);
     } catch (err) {
       console.log('err: ', err);
+    }
+    navigation.navigate('Your Fleet');
     }
   };
 
