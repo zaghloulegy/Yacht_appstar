@@ -1,28 +1,22 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {AsyncStorage} from '@aws-amplify/core';
 
 type StackParamList = {
   navigate: any;
 };
 
-type RelinquishCommand = {
-  relinquish_command: number;
-}
-
 const InCommand = (props: any) => {
   const navigation = useNavigation<StackParamList>();
 
-  console.log(props.route.params)
-
   const handleRelinquishCommand = async () => {
     const relinquishInCommand: number = Date.now();
-      const newRelinquishCommand: RelinquishCommand = {
-        relinquish_command: relinquishInCommand,
-      };
       try {
-        console.log('newRelinquishCommand: ', newRelinquishCommand);
-        //await AsyncStorage.mergeItem(`voyage:${startTimestamp}`, JSON.stringify(newRelinquishCommand));
+        const restOfVoyageString = await AsyncStorage.getItem(`voyage:${props.route.params.startTimestamp}`);
+        const restOfVoyage = JSON.parse(restOfVoyageString);
+        restOfVoyage.relinquish_command = relinquishInCommand;
+        await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));
         navigation.navigate('Vessel', {'mmsi': props.route.params.mmsi});
       } catch (err) {
         console.log(err);

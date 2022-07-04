@@ -14,15 +14,6 @@ type Voyage = {
   start_at_sea: number;
 };
 
-type MergeVoyage = {
-  end_at_sea: number;
-};
-
-type InCommand = {
-  mmsi: any;
-  start_command: number;
-}
-
 const Vessel = (props:any) => {
   const navigation = useNavigation<StackParamList>();
   const [isAtSea, setIsAtSea] = useState(false);
@@ -38,21 +29,18 @@ const Vessel = (props:any) => {
         start_at_sea: startSea,
       };
       try {
-        console.log('newVoyage: ', newVoyage);
-        await AsyncStorage.setItem(`voyage:${newVoyage.start_at_sea}`, newVoyage);
+        await AsyncStorage.setItem(`voyage:${newVoyage.start_at_sea}`, JSON.stringify(newVoyage));
       } catch (err) {
         console.log(err);
       }
     } else {
       setIsAtSea(false);
       const disembark: number = Date.now();
-      const newVoyage: MergeVoyage = {
-        end_at_sea: disembark,
-      };
       try {
-        console.log('newVoyage: ', newVoyage);
-        //await AsyncStorage.mergeItem(`voyage:${startTimestamp}`, JSON.stringify(newVoyage));
-        //mergeItem is not a function? old version of AsyncStorage? I can resolve with out the function we'll discuss it on monday
+        const restOfVoyageString = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
+        const restOfVoyage = JSON.parse(restOfVoyageString);
+        restOfVoyage.end_at_sea = disembark;
+        await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));
       } catch (err) {
         console.log(err);
       }
@@ -62,13 +50,11 @@ const Vessel = (props:any) => {
   const handleInCommand = async () => {
     if(isAtSea){
       const startInCommand: number = Date.now();
-      const newInCommand: InCommand = {
-        mmsi: props.route.params.mmsi,
-        start_command: startInCommand,
-      };
       try {
-        console.log('newInCommand: ', newInCommand);
-        //await AsyncStorage.mergeItem(`voyage:${startTimestamp}`, JSON.stringify(newInCommand));
+        const restOfVoyageString = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
+        const restOfVoyage = JSON.parse(restOfVoyageString);
+        restOfVoyage.start_command = startInCommand;
+        await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));
         navigation.navigate('In Command', {'mmsi': props.route.params.mmsi, 'startTimestamp': startTimestamp});
       } catch (err) {
         console.log(err);
