@@ -2,8 +2,7 @@ import {View, Text, Button, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
-import {AsyncStorage} from '@aws-amplify/core';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type StackParamList = {
   navigate: any;
@@ -37,10 +36,12 @@ const Vessel = (props:any) => {
       setIsAtSea(false);
       const disembark: number = Date.now();
       try {
-        const restOfVoyageString = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
+        const restOfVoyageString: any = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
         const restOfVoyage = JSON.parse(restOfVoyageString);
         restOfVoyage.end_at_sea = disembark;
         await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));
+        const test = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
+        console.log(test)
       } catch (err) {
         console.log(err);
       }
@@ -51,7 +52,7 @@ const Vessel = (props:any) => {
     if(isAtSea) {
       const startInCommand: number = Date.now();
       try {
-        const restOfVoyageString = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
+        const restOfVoyageString: any = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
         const restOfVoyage = JSON.parse(restOfVoyageString);
         restOfVoyage.start_command = startInCommand;
         await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));

@@ -4,9 +4,9 @@ const clearData = async () => {
   try {
     const allKeys = await AsyncStorage.getAllKeys();
     const filterKeys = allKeys.filter((key) => {
-      return key.includes('vessel');
+      return key.includes('voyage');
     });
-    await AsyncStorage.multiRemove(allKeys);
+    await AsyncStorage.multiRemove(filterKeys);
   } catch (err) {
     console.log('err: ', err);
   }
