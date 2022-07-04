@@ -20,7 +20,7 @@ const AddVessel = (props: any) => {
   const navigation = useNavigation<StackParamList>();
 
   const handleAddVessel = async (event: any) => {
-    if (/\d+/.test(event.target.value)) {
+    if (/^\d{9}$/.test(event.target.value)) {
       props.route.params.addVessel(true);
       vessel.mmsi = event.target.value;
       try {
