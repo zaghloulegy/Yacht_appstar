@@ -23,6 +23,7 @@ const YourFleet = () => {
   useEffect(() => {
     const renderVessels = async () => {
       try{
+        setAddVessel(false);
         const allKeys = await AsyncStorage.getAllKeys();
         let filterKeys = allKeys.filter((key) => {
           return  key.includes('vessel');
@@ -54,7 +55,7 @@ const YourFleet = () => {
         return (
           <View key={vessel[0]}>
           <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
-            <Text style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10, borderRadius: 10,}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
+            <Text style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
           </TouchableOpacity>
           </View>
         )

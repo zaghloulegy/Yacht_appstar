@@ -12,6 +12,15 @@ type StackParamList = {
 type Voyage = {
   mmsi: any;
   start_at_sea: number;
+};
+
+type MergeVoyage = {
+  end_at_sea: number;
+};
+
+type InCommand = {
+  mmsi: any;
+  start_command: number;
 }
 
 const Vessel = (props:any) => {
@@ -24,7 +33,6 @@ const Vessel = (props:any) => {
       const startSea: number = Date.now();
       setIsAtSea(true);
       setStartTimestap(startSea);
-      console.log('Date.now(): ', Date.now());
       const newVoyage: Voyage = {
         mmsi: props.route.params.mmsi,
         start_at_sea: startSea,
@@ -37,7 +45,37 @@ const Vessel = (props:any) => {
       }
     } else {
       setIsAtSea(false);
+      const disembark: number = Date.now();
+      const newVoyage: MergeVoyage = {
+        end_at_sea: disembark,
+      };
+      try {
+        console.log('newVoyage: ', newVoyage);
+        //await AsyncStorage.mergeItem(`voyage:${startTimestamp}`, JSON.stringify(newVoyage));
+        //mergeItem is not a function? old version of AsyncStorage? I can resolve with out the function we'll discuss it on monday
+      } catch (err) {
+        console.log(err);
+      }
     };
+  };
+
+  const handleInCommand = async () => {
+    if(isAtSea){
+      const startInCommand: number = Date.now();
+      const newInCommand: InCommand = {
+        mmsi: props.route.params.mmsi,
+        start_command: startInCommand,
+      };
+      try {
+        console.log('newInCommand: ', newInCommand);
+        //await AsyncStorage.mergeItem(`voyage:${startTimestamp}`, JSON.stringify(newInCommand));
+        navigation.navigate('In Command', {'mmsi': props.route.params.mmsi, 'startTimestamp': startTimestamp});
+      } catch (err) {
+        console.log(err);
+      }
+    }else{
+      //error must be at sea to be in command of a vessel
+    }
   };
 
   return (
@@ -53,7 +91,7 @@ const Vessel = (props:any) => {
       <TouchableOpacity onPress={handleAtSea}>
         <Text >{isAtSea?'Disembark':'At Sea'}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('In Command')}>
+      <TouchableOpacity onPress={handleInCommand}>
         <Text >In Command</Text>
       </TouchableOpacity>
       <Footer />
