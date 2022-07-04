@@ -49,7 +49,7 @@ const Vessel = (props:any) => {
   };
 
   const handleInCommand = async () => {
-    if(isAtSea){
+    if(isAtSea) {
       const startInCommand: number = Date.now();
       try {
         const restOfVoyageString: any = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
@@ -75,10 +75,10 @@ const Vessel = (props:any) => {
       }
     }>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Vessel: {props.route.params.mmsi}</Text>
-      <TouchableOpacity onPress={handleAtSea}>
+      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}}>
         <Text >{isAtSea?'Disembark':'At Sea'}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleInCommand}>
+      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}}>
         <Text >In Command</Text>
       </TouchableOpacity>
       <Footer />

@@ -1,4 +1,4 @@
-import {View, Text, Button, TouchableOpacity} from 'react-native';
+import {View, Text, Button,TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
@@ -45,10 +45,11 @@ const Voyages = () => {
     }>
       <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Voyages</Text>
 
-      <Button title="Latest Nav Log" onPress={() => navigation.navigate('Nav Log')}></Button>
+      <TouchableOpacity onPress={() => navigation.navigate('Nav Log')} style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}}>
+        <Text>Latest Nav Log</Text>
+      </TouchableOpacity>
 
       {voyages?voyages.map((voyage: any) => {
-        console.log(voyage)
         const individualMMSI = JSON.parse(voyage[1]).mmsi;
         const individualStart = JSON.parse(voyage[1]).start_at_sea;
         const individualEnd = JSON.parse(voyage[1]).end_at_sea;
