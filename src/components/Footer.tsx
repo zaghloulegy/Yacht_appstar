@@ -76,6 +76,8 @@ const footer = StyleSheet.create({
   view: {
     backgroundColor:'#1D3557', 
     padding:50,
+    marginBottom:-10,
+    height:"190px",
   },
   touchable: {
     backgroundColor:'#A8DADC',
