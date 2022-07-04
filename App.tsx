@@ -6,6 +6,7 @@ import {Amplify, API} from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import Routes from './src/routes';
 
+
 Amplify.configure(awsconfig);
 
 // eslint-disable-next-line require-jsdoc
