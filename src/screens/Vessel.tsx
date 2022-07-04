@@ -75,10 +75,10 @@ const Vessel = (props:any) => {
       }
     }>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Vessel: {props.route.params.mmsi}</Text>
-      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}}>
+      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10, fontSize:25,width:'200px',overflow: 'hidden', alignItems: 'center',}}>
         <Text >{isAtSea?'Disembark':'At Sea'}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}}>
+      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10, fontSize:25,width:'200px',overflow: 'hidden', alignItems: 'center'}}>
         <Text >In Command</Text>
       </TouchableOpacity>
       <Footer />
