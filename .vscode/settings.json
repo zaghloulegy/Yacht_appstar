@@ -13,5 +13,8 @@
   "turboConsoleLog.quote": "\"",
   "editor.tabSize": 2,
   "javascript.preferences.quoteStyle": "single",
-  "typescript.preferences.quoteStyle": "single"
+  "typescript.preferences.quoteStyle": "single",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
