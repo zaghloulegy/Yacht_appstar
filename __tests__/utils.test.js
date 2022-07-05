@@ -7018,7 +7018,8 @@ describe('getNightHours', () => {
     expect(typeof getNightHours(testDataIOI)).toBe('number');
     expect(typeof getNightHours(testDataODD)).toBe('number');
   });
-  test.only('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => {
+
+  test('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => {
     const testDataDUMMY = {
       data: {
         positions: [
@@ -7133,5 +7134,6 @@ describe('getNightHours', () => {
       },
     };
     expect(typeof getNightHours(testDataDUMMY)).toBe('number');
+    expect(getNightHours(testDataDUMMY)).toBeCloseTo(14, 0);
   });
 });
