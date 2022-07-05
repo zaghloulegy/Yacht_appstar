@@ -19,17 +19,18 @@ let initialRenderVessels: any;
 const Voyages = () => {
   const navigation = useNavigation<StackParamList>();
   const [voyages, setVoyages] = useState(initialRenderVessels);
-  const [addVoyages, setAddVoyages] = useState(false);
+  const [addVoyages, setAddVoyages] = useState(true);
 
   const handleAPICall = async (voyage: any) => {
-    const individualMMSI = JSON.parse(voyage[1]).mmsi;
-    const individualStart = JSON.parse(voyage[1]).start_at_sea;
-    const individualEnd = JSON.parse(voyage[1]).end_at_sea;
-    const startInCommand = JSON.parse(voyage[1]).start_command;
-    const endInCommand = JSON.parse(voyage[1]).relinquish_command;
+    const parsedData = JSON.parse(voyage[1]);
+    const individualMMSI = parsedData.mmsi;
+    const individualStart = parsedData.start_at_sea;
+    const individualEnd = parsedData.end_at_sea;
+    const startInCommand = parsedData.start_command;
+    const endInCommand = parsedData.relinquish_command;
+    
     try{
     const APIData:any = await vesselAPICall(individualMMSI, APIConvertTime(individualStart), APIConvertTime(individualEnd));
-    console.log("from API",APIData);
     const completedVoyageString: any = await AsyncStorage.getItem(`voyage:${individualStart}`);
     const completedVoyage = JSON.parse(completedVoyageString);
     completedVoyage.voyageData = APIData.data.data;
@@ -42,6 +43,7 @@ const Voyages = () => {
     const parsedVessel = JSON.parse(vessel);
     parsedVessel.name = completedVoyage.voyageData.name;
     await AsyncStorage.setItem(`vessel:${individualMMSI}`, JSON.stringify(parsedVessel));
+    setAddVoyages(false);
     } catch (err) {
       console.log(err);
     }
@@ -57,11 +59,11 @@ const Voyages = () => {
     };
     await AsyncStorage.setItem(`voyage:${newVoyage.start_at_sea}`, JSON.stringify(newVoyage));
   }
-
+  
   useEffect(() => {
     const renderVoyages = async () => {
       try{
-        setAddVoyages(false);
+        setAddVoyages(true);
         const allKeys = await AsyncStorage.getAllKeys();
         let filterKeys = allKeys.filter((key:any) => {
           return  key.includes('voyage');

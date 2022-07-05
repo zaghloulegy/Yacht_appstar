@@ -17,11 +17,13 @@ const Vessel = (props:any) => {
   const navigation = useNavigation<StackParamList>();
   const [isAtSea, setIsAtSea] = useState(false);
   const [startTimestamp, setStartTimestap] = useState(Number);
+  const [atSeaError, setAtSeaError] = useState(false);
 
   const handleAtSea = async () => {
     if (!isAtSea) {
       const startSea: number = Date.now();
       setIsAtSea(true);
+      setAtSeaError(false);
       setStartTimestap(startSea);
       const newVoyage: Voyage = {
         mmsi: props.route.params.mmsi,
@@ -40,8 +42,6 @@ const Vessel = (props:any) => {
         const restOfVoyage = JSON.parse(restOfVoyageString);
         restOfVoyage.end_at_sea = disembark;
         await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));
-        const test = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
-        console.log(test)
       } catch (err) {
         console.log(err);
       }
@@ -61,7 +61,7 @@ const Vessel = (props:any) => {
         console.log(err);
       }
     }else{
-      //error must be at sea to be in command of a vessel
+      setAtSeaError(true);
     }
   };
 
@@ -81,7 +81,10 @@ const Vessel = (props:any) => {
       <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,width:'200px',overflow: 'hidden', alignItems: 'center'}}>
         <Text style={{fontSize:25}}>In Command</Text>
       </TouchableOpacity>
-      <Footer />
+      {atSeaError?<View style={{backgroundColor:'#E63946',}}>
+        <Text style={{color:'white'}}>You must be at sea to be in command of a vessel</Text>
+      </View>:<></>}
+      {isAtSea?<></>:<Footer />}
     </View>
   );
 };
