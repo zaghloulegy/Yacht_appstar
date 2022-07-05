@@ -15,13 +15,13 @@ const FrontPage = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
-        backgroundColor: '#A8DADC'
+        backgroundColor: '#A8DADC',
       }
     }>
-      <Text style={{fontSize: 20,color: '#1D3557',}}>Yacht Appstar</Text>
-      <Image source={require('../../assets/Loading-Badge.png')} style={{width: 250,height: 250,}}/>
-      <TouchableOpacity onPress={() => navigation.navigate('Your Fleet')}>
-        <Text style={{backgroundColor:'#E63946',padding:10,alignItems: 'center',borderRadius:100,color:'#F1FAEE',}}>Sign In</Text>
+      <Text style={{fontSize: 20, color: '#1D3557'}}>Yacht Appstar</Text>
+      <Image source={require('../../assets/Loading-Badge.png')} style={{width: 250, height: 250}}/>
+      <TouchableOpacity testID='sign-in' onPress={() => navigation.navigate('Your Fleet')}>
+        <Text style={{backgroundColor: '#E63946', padding: 10, alignItems: 'center', borderRadius: 100, color: '#F1FAEE'}}>Sign In</Text>
       </TouchableOpacity>
     </View>
   );

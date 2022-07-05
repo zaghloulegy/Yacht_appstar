@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {withAuthenticator} from '@aws-amplify/ui-react';
 
@@ -11,7 +11,6 @@ const SignIn = () => {
         flex: 1,
       }
     }>
-      
     </View>
   );
 };
