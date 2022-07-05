@@ -3,7 +3,7 @@ import distance from '@turf/distance';
 const helpers = require('@turf/helpers');
 
 const voyageTotalDistance = (voyageData) => {
-  const allCoors = voyageData.data.positions.map((coords) => {
+  const allCoors = voyageData.positions.map((coords) => {
     return [coords.lon, coords.lat];
   });
 
@@ -14,8 +14,8 @@ const voyageTotalDistance = (voyageData) => {
     const to = helpers.point(allCoors[i + 1]);
     voyageDistance += distance(from, to, {units: 'kilometers'});
   }
-
-  return voyageDistance * 0.539957;
+  const distanceUnRounded = voyageDistance * 0.539957;
+  return distanceUnRounded.toFixed(1);
 };
 
-module.exports = voyageTotalDistance;
+export default voyageTotalDistance;
