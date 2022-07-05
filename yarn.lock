@@ -12492,6 +12492,11 @@
     "fuzzy" "^0.1.1"
     "xtend" "^4.0.0"
 
+"sunrise-sunset-js@^2.2.1":
+  "integrity" "sha512-ErsvmxoTCZRacVPtlchkrTAR8qxypBy0BDrrv9LMugLuF0AykcS5pQsP1EhQJHgumxrTTSI8N8KJkQMVJ6dEPw=="
+  "resolved" "https://registry.npmjs.org/sunrise-sunset-js/-/sunrise-sunset-js-2.2.1.tgz"
+  "version" "2.2.1"
+
 "supercluster@^7.1.0":
   "integrity" "sha512-EulshI3pGUM66o6ZdH3ReiFcvHpM3vAigyK+vcxdjpJyEbIIrtbmBdY23mGgnI24uXiGFvrGq9Gkum/8U7vJWg=="
   "resolved" "https://registry.npmjs.org/supercluster/-/supercluster-7.1.5.tgz"

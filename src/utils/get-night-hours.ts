@@ -1,8 +1,16 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable camelcase */
-import SunCalc from 'suncalc';
+import {getSunrise, getSunset} from 'sunrise-sunset-js';
+
+const hoursCalc = (end: any, start:any) => {
+  const difference = end.getTime() - start.getTime();
+  const hoursDifference = difference/1000/60/60;
+  return hoursDifference;
+};
 
 const getNightHours = (voyageData: any) => {
+  let nightHoursAtSea = 0;
+  
   type positionObj = {
     lat: number;
     lon: number;
@@ -14,7 +22,10 @@ const getNightHours = (voyageData: any) => {
     last_position_epoch: number;
     last_position_UTC: string;
   };
+
   const positions: positionObj[] = voyageData.data.positions;
+
+  console.log(voyageData, 'ZZZZZZZZZZZZZZZZZ')
 
   interface DaysAtSeaObj {
     [key: string]: dayAtSea;
@@ -25,48 +36,53 @@ const getNightHours = (voyageData: any) => {
     timesAfterSunSET: Date[];
   };
 
-  const daysAtSea: DaysAtSeaObj = {};
+  const daysAtSea : DaysAtSeaObj = {};
 
-  for (let i:number = 0; i<= positions.length-1; i++) {
-    const {lat, lon, last_position_UTC, last_position_epoch} = positions[i];
+  for (let i :number = 0; i<= positions.length-1; i++) {
+    const {lat, lon, last_position_epoch} = positions[i];
     const positionTimestamp = new Date(last_position_epoch * 1000);
-    const positionDateAndTime = new Date(last_position_UTC);
-    const positionDate = `${positionTimestamp.getFullYear()}-${positionTimestamp.getMonth() + 1
-    }-${positionTimestamp.getDate()}`;
-    const sunTimes = SunCalc.getTimes(positionTimestamp, lat, lon);
-    const currentDaySunRISE = sunTimes.sunrise;
-    console.log('currentDaySunRISE: ', currentDaySunRISE);
-    const currentDaySunSET = sunTimes.sunset;
-    console.log('currentDaySunSET: ', currentDaySunSET);
+    const positionDate = `${positionTimestamp.getUTCFullYear()}-${positionTimestamp.getUTCMonth() + 1}-${positionTimestamp.getUTCDate()}`;
+    const currentDaySunRISE = getSunrise(lat, lon, new Date(positionDate));
+    const currentDaySunSET = getSunset(lat, lon, new Date(positionDate));
 
-    daysAtSea[positionDate] = {
-      // then create a property on daysAtSea with the key of {positionDate} and a value of a dayAtSea object
-      timesBeforeSunRISE: [],
-      timesAfterSunSET: [],
-    };
+    if (!daysAtSea[positionDate]) {
+      daysAtSea[positionDate] = {
+        // then create a property on daysAtSea with the key of {positionDate} and a value of a dayAtSea object
+        timesBeforeSunRISE: [],
+        timesAfterSunSET: [],
+      };
+    }
 
-    if (positionTimestamp.getTime() > currentDaySunSET.getTime()) {
+    if (positionTimestamp > currentDaySunSET) {
       // Is it after dark?
-      if (!daysAtSea[positionDate].timesAfterSunSET.length) {
-        daysAtSea[positionDate].timesAfterSunSET.push(currentDaySunSET); // make the FIRST element of timesAfterSunSET the actuall sunset
-      }
       daysAtSea[positionDate].timesAfterSunSET.push(positionTimestamp); // and collect that timestamp in timesAfterSunSET
     }
 
-    if (positionDateAndTime.getTime() < currentDaySunRISE.getTime()) {
+    if (positionTimestamp < currentDaySunRISE) {
       // Is it before sunrise?
       daysAtSea[positionDate].timesBeforeSunRISE.push(positionTimestamp); // and collect that timestamp in timesBeforeSunRISE
     }
+
     if (i===positions.length-1) {
       for (const day in daysAtSea) {
-          daysAtSea[day].timesBeforeSunRISE.length?
-          daysAtSea[day].timesBeforeSunRISE.push(currentDaySunRISE):
-          daysAtSea[day].timesBeforeSunRISE = []; // make the LAST element of timesBeforeSunRISE the actuall sunrise
+        if (daysAtSea[day].timesBeforeSunRISE.length) daysAtSea[day].timesBeforeSunRISE.unshift(currentDaySunRISE); // make the LAST element of timesBeforeSunRISE the actuall sunrise
+        if (daysAtSea[day].timesAfterSunSET.length) daysAtSea[day].timesAfterSunSET.push(currentDaySunSET); // make the FIRST element of timesAfterSunSET the actuall sunset
+        const beforeSRLength = daysAtSea[day].timesBeforeSunRISE.length;
+        const afterSSLength = daysAtSea[day].timesAfterSunSET.length;
+
+        if ( beforeSRLength ) {
+          nightHoursAtSea += hoursCalc(daysAtSea[day].timesBeforeSunRISE[beforeSRLength-1], daysAtSea[day].timesBeforeSunRISE[0]);
+        };
+        console.log(nightHoursAtSea)
+        if ( afterSSLength ) {
+          nightHoursAtSea += hoursCalc(daysAtSea[day].timesAfterSunSET[afterSSLength-1], daysAtSea[day].timesAfterSunSET[0]);
+        };
       }
     }
   }
-  console.table(daysAtSea);
-  return 4;
+  console.log('positions', positions)
+  console.log('daysAtSea: ', daysAtSea);
+  return Math.abs(nightHoursAtSea).toFixed(1);
 };
-// why are all arrays' length 2?
+
 export default getNightHours;
