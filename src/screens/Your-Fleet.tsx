@@ -2,7 +2,7 @@ import {View, Text, TouchableOpacity, Button} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
-import { Entypo } from '@expo/vector-icons';
+import {Entypo} from '@expo/vector-icons';
 import {withAuthenticator} from '@aws-amplify/ui-react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect, useState} from 'react';
@@ -18,24 +18,23 @@ const YourFleet = () => {
   const navigation = useNavigation<StackParamList>();
   const [vessels, setVessels] = useState(initialRenderVessels);
   const [addVessel, setAddVessel] = useState(false);
-  
 
   useEffect(() => {
     const renderVessels = async () => {
-      try{
+      try {
         setAddVessel(false);
         const allKeys = await AsyncStorage.getAllKeys();
-        let filterKeys = allKeys.filter((key) => {
-          return  key.includes('vessel');
-        })
-        let allVessels = await AsyncStorage.multiGet(filterKeys);
+        const filterKeys = allKeys.filter((key) => {
+          return key.includes('vessel');
+        });
+        const allVessels = await AsyncStorage.multiGet(filterKeys);
         setVessels(allVessels);
       } catch (err) {
         console.log('err: ', err);
       }
     };
     renderVessels();
-  }, [addVessel])
+  }, [addVessel]);
 
   return (
     <View style={
@@ -46,21 +45,21 @@ const YourFleet = () => {
         backgroundColor: '#1D3557',
       }
     }>
-      <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Your Fleet</Text>
+      <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Your Fleet</Text>
 
       {vessels?vessels.map((vessel: any) => {
-        const individualMMSI = JSON.parse(vessel[1]).mmsi
-        const individualName = JSON.parse(vessel[1]).name
+        const individualMMSI = JSON.parse(vessel[1]).mmsi;
+        const individualName = JSON.parse(vessel[1]).name;
         return (
           <View key={vessel[0]}>
-          <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
-            <Text style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
+              <Text style={{borderWidth: 1, padding: 20, backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
+            </TouchableOpacity>
           </View>
         );
       }):<></>}
 
-      <TouchableOpacity onPress={() => navigation.navigate('Add Vessel', {'addVessel':setAddVessel})}>
+      <TouchableOpacity onPress={() => navigation.navigate('Add Vessel', {'addVessel': setAddVessel})}>
         <Entypo name="plus" size={24} color="#A8DADC" />
       </TouchableOpacity>
 
