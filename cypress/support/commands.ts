@@ -1,4 +1,9 @@
 // / <reference types="cypress" />
+declare namespace Cypress {
+  interface Chainable {
+    getBySel(selector: string, ...args: any): Chainable<any>;
+  }
+}
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +40,6 @@
 //     }
 //   }
 // }
+Cypress.Commands.add('getBySel', (selector, ...args) => {
+  return cy.get(`[data-testid=${selector}]`, ...args);
+});
