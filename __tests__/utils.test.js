@@ -7019,13 +7019,14 @@ describe('getNightHours', () => {
     expect(typeof getNightHours(testDataODD)).toBe('number');
   });
   test('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => {
-    /* testDataDUMMY = {
+    const testDataDUMMY = {
       data: {
-        positions: [
-          // {lat:, lon:, last_position_UTC:, last_position_epoch:,}
+        positions: [ 
+          {
+            'lat':20.29186, 'lon':38.27084, 'last_position_UTC':'2022-06-28T19:00:00Z', 'last_position_epoch':,}
         ],
       },
 
-    };*/
+    };
   });
 });

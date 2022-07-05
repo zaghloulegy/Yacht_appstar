@@ -35,7 +35,9 @@ const getNightHours = (voyageData: any) => {
     }-${positionTimestamp.getDate()}`;
     const sunTimes = SunCalc.getTimes(positionTimestamp, lat, lon);
     const currentDaySunRISE = sunTimes.sunrise;
+    console.log('currentDaySunRISE: ', currentDaySunRISE);
     const currentDaySunSET = sunTimes.sunset;
+    console.log('currentDaySunSET: ', currentDaySunSET);
 
     daysAtSea[positionDate] = {
       // then create a property on daysAtSea with the key of {positionDate} and a value of a dayAtSea object
