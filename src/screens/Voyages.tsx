@@ -9,6 +9,7 @@ import APIConvertTime from '../utils/apiTimeConvert';
 import {vesselAPICall} from '../utils/api';
 import voyageTotalDistance from '../utils/voyageTotalDistance';
 import daysDifference from '../utils/daysCalc';
+import getNightHours from '../utils/get-night-hours';
 
 type StackParamList = {
   navigate: any;
@@ -30,6 +31,7 @@ const Voyages = () => {
     const endInCommand = parsedData.relinquish_command;
     
     try{
+      console.log(APIConvertTime(individualStart), APIConvertTime(individualEnd))
     const APIData:any = await vesselAPICall(individualMMSI, APIConvertTime(individualStart), APIConvertTime(individualEnd));
     const completedVoyageString: any = await AsyncStorage.getItem(`voyage:${individualStart}`);
     const completedVoyage = JSON.parse(completedVoyageString);
@@ -37,7 +39,9 @@ const Voyages = () => {
     const voyageDistance = voyageTotalDistance(completedVoyage.voyageData);
     const daysAtSea = daysDifference(individualEnd, individualStart);
     const daysInCommand = daysDifference(endInCommand, startInCommand);
-    completedVoyage.voyageReport = {'voyageDistance':voyageDistance,'daysAtSea':daysAtSea,'daysInCommand':daysInCommand};
+    const nightswatch = getNightHours(APIData.data);
+    console.log(nightswatch)
+    completedVoyage.voyageReport = {'voyageDistance':voyageDistance,'daysAtSea':daysAtSea,'daysInCommand':daysInCommand,'nightHours':nightswatch};
     await AsyncStorage.setItem(`voyage:${individualStart}`, JSON.stringify(completedVoyage));
     const vessel: any = await AsyncStorage.getItem(`vessel:${individualMMSI}`);
     const parsedVessel = JSON.parse(vessel);
@@ -102,12 +106,12 @@ const Voyages = () => {
         const parsedEnd = `${convertTime(individualEnd)}`.replace(/\w{3}\+.+\(.+\)$/, '');
         
         return (voyageData?<View style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={voyage[0]}>
-          <Text key={voyage[0]}>{parsedData.voyageReport.voyageDistance} {parsedData.voyageReport.daysAtSea} {parsedData.voyageReport.daysInCommand} {voyageData.name} {parsedStart} {parsedEnd}</Text>
+          <Text key={voyage[0]}>Vessel:{voyageData.name} Night hours:{parsedData.voyageReport.nightHours} hours Voyage Distance:{parsedData.voyageReport.voyageDistance}Nm Days at Sea:{parsedData.voyageReport.daysAtSea} days Days in Command:{parsedData.voyageReport.daysInCommand} days {parsedStart} {parsedEnd}</Text>
         </View>:
           <View style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={voyage[0]}>
           <Text key={voyage[0]}>{individualMMSI} {parsedStart} {parsedEnd}</Text>
           <TouchableOpacity style={{backgroundColor:'red'}} onPress={() => handleAPICall(voyage)}>
-            <Text>MAKE API CALL</Text>
+            <Text>Create report</Text>
           </TouchableOpacity>
           </View>
         )
