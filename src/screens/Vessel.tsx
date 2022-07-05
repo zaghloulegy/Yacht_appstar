@@ -1,4 +1,4 @@
-import {View, Text, Button, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
@@ -41,7 +41,7 @@ const Vessel = (props:any) => {
         restOfVoyage.end_at_sea = disembark;
         await AsyncStorage.setItem(`voyage:${restOfVoyage.start_at_sea}`, JSON.stringify(restOfVoyage));
         const test = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
-        console.log(test)
+        console.log(test);
       } catch (err) {
         console.log(err);
       }
@@ -49,7 +49,7 @@ const Vessel = (props:any) => {
   };
 
   const handleInCommand = async () => {
-    if(isAtSea) {
+    if (isAtSea) {
       const startInCommand: number = Date.now();
       try {
         const restOfVoyageString: any = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
@@ -60,8 +60,8 @@ const Vessel = (props:any) => {
       } catch (err) {
         console.log(err);
       }
-    }else{
-      //error must be at sea to be in command of a vessel
+    } else {
+      // error must be at sea to be in command of a vessel
     }
   };
 
@@ -75,11 +75,11 @@ const Vessel = (props:any) => {
       }
     }>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Vessel: {props.route.params.mmsi}</Text>
-      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,width:'200px',overflow: 'hidden', alignItems: 'center',}}>
-        <Text style={{fontSize:25}}>{isAtSea?'Disembark':'At Sea'}</Text>
+      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 0.5, padding: 20, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10, width: '200px', overflow: 'hidden', alignItems: 'center'}}>
+        <Text style={{fontSize: 25}}>{isAtSea?'Disembark':'At Sea'}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,width:'200px',overflow: 'hidden', alignItems: 'center'}}>
-        <Text style={{fontSize:25}}>In Command</Text>
+      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 0.5, padding: 20, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10, width: '200px', overflow: 'hidden', alignItems: 'center'}}>
+        <Text style={{fontSize: 25}}>In Command</Text>
       </TouchableOpacity>
       <Footer />
     </View>

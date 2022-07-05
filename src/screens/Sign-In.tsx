@@ -2,7 +2,6 @@ import {View} from 'react-native';
 import React from 'react';
 import {withAuthenticator} from '@aws-amplify/ui-react';
 
-
 const SignIn = () => {
   return (
     <View style={
