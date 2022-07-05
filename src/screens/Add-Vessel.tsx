@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc */
 import {View, Text, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import Footer from '../components/Footer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
@@ -49,7 +49,7 @@ const AddVessel = (props: any) => {
     }>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Add Vessel</Text>
 
-      <TextInput onSubmitEditing={handleAddVessel} style={{backgroundColor: '#F1FAEE', height: 40,
+      <TextInput testID='MMSI-input' onSubmitEditing={handleAddVessel} style={{backgroundColor: '#F1FAEE', height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,}} placeholder='MMSI Number' placeholderTextColor="black"/>

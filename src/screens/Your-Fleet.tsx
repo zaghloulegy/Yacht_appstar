@@ -7,7 +7,6 @@ import {withAuthenticator} from '@aws-amplify/ui-react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect, useState} from 'react';
 import clearData from '../utils/clear-data';
-import App from '../../App';
 
 type StackParamList = {
   navigate: any;
@@ -15,7 +14,9 @@ type StackParamList = {
 
 let initialRenderVessels: any;
 
-const YourFleet = () => {
+const YourFleet = (user: any) => {
+  // console.log(user);
+
   const navigation = useNavigation<StackParamList>();
   const [vessels, setVessels] = useState(initialRenderVessels);
   const [addVessel, setAddVessel] = useState(false);
@@ -54,12 +55,12 @@ const YourFleet = () => {
         return (
           <View key={vessel[0]}>
             <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
-            <Text style={{padding: 26,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center',margin:10,height:'100%',textAlign:'center', width:'200px',}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
+              <Text style={{padding: 26, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center', margin: 10, height: '100%', textAlign: 'center', width: '200px'}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
             </TouchableOpacity>
           </View>
         );
       }):<></>}
-      <TouchableOpacity onPress={() => navigation.navigate('Add Vessel', {'addVessel':setAddVessel})}>
+      <TouchableOpacity testID='addVessel' onPress={() => navigation.navigate('Add Vessel', {'addVessel': setAddVessel})}>
         <Entypo name="plus" size={24} color="#A8DADC" />
       </TouchableOpacity>
 
