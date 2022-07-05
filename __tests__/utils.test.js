@@ -7018,14 +7018,14 @@ describe('getNightHours', () => {
     expect(typeof getNightHours(testDataIOI)).toBe('number');
     expect(typeof getNightHours(testDataODD)).toBe('number');
   });
-  test('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => { 
-    const testDataDUMMY = {
+  test('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => {
+    /* testDataDUMMY = {
       data: {
-        positions = [
-          {lat:, lon:, last_position_UTC:, last_position_epoch:,}
-        ]
-      }
+        positions: [
+          // {lat:, lon:, last_position_UTC:, last_position_epoch:,}
+        ],
+      },
 
-    }
-   })
+    };*/
+  });
 });
