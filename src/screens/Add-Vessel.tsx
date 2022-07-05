@@ -20,7 +20,7 @@ const AddVessel = (props: any) => {
   const navigation = useNavigation<StackParamList>();
 
   const handleAddVessel = async (event: any) => {
-    if (/\d+/.test(event.target.value)) {
+    if (/^\d{9}$/.test(event.target.value)) {
       props.route.params.addVessel(true);
       vessel.mmsi = event.target.value;
       try {
@@ -45,7 +45,10 @@ const AddVessel = (props: any) => {
     }>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Add Vessel</Text>
 
-      <TextInput onSubmitEditing={handleAddVessel} style={{backgroundColor: '#F1FAEE', padding: 2}} placeholder='MMSI Number' placeholderTextColor="black"/>
+      <TextInput onSubmitEditing={handleAddVessel} style={{backgroundColor: '#F1FAEE', height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,}} placeholder='MMSI Number' placeholderTextColor="black"/>
       <Footer />
     </View>
   );
