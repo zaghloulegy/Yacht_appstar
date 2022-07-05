@@ -54,7 +54,7 @@ const YourFleet = () => {
         return (
           <View key={vessel[0]}>
             <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
-            <Text style={{padding: 26,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center',margin:10, width: '100%',height:'100%',textAlign:'center',display: 'inline-block', width:'200px',}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
+            <Text style={{padding: 26,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center',margin:10,height:'100%',textAlign:'center', width:'200px',}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
             </TouchableOpacity>
           </View>
         );
