@@ -14,8 +14,8 @@ const voyageTotalDistance = (voyageData) => {
     const to = helpers.point(allCoors[i + 1]);
     voyageDistance += distance(from, to, {units: 'kilometers'});
   }
-
-  return voyageDistance * 0.539957;
+  const distanceUnRounded = voyageDistance * 0.539957;
+  return distanceUnRounded.toFixed(1);
 };
 
 export default voyageTotalDistance;

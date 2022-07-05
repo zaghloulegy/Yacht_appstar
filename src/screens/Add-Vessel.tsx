@@ -18,18 +18,22 @@ const vessel: VesselInterface = {mmsi: '', name: ''};
 
 const AddVessel = (props: any) => {
   const navigation = useNavigation<StackParamList>();
+  const [addVesselsError, setAddVesselsError] = useState(false);
 
   const handleAddVessel = async (event: any) => {
     if (/^\d{9}$/.test(event.target.value)) {
       props.route.params.addVessel(true);
       vessel.mmsi = event.target.value;
       try {
+        setAddVesselsError(true);
         const vesselStringify = JSON.stringify(vessel);
         await AsyncStorage.setItem(`vessel:${vessel.mmsi}`, vesselStringify);
       } catch (err) {
         console.log('err: ', err);
       }
       navigation.navigate('Your Fleet');
+    } else {
+      setAddVesselsError(true);
     }
   };
 
@@ -49,6 +53,9 @@ const AddVessel = (props: any) => {
     margin: 12,
     borderWidth: 1,
     padding: 10,}} placeholder='MMSI Number' placeholderTextColor="black"/>
+      {addVesselsError?<View style={{backgroundColor:'#E63946',}}>
+        <Text style={{color:'white'}}>You must provide a valid mmsi</Text>
+      </View>:<></>}
       <Footer />
     </View>
   );
