@@ -7,7 +7,7 @@ const voyageAPI = axios.create({
 export const vesselAPICall = async (mmsi: any, start: any, end: any) => {
   try{
     console.log(mmsi, start, end);
-  const voyageData = await voyageAPI.get(`vessel_history?api-key=----&mmsi=${mmsi}&from=${start}&to=${end}`);
+  const voyageData = await voyageAPI.get(`vessel_history?api-key=-----&mmsi=${mmsi}&from=${start}&to=${end}`);
   return voyageData;
   } catch (err) {
     console.log(err)
