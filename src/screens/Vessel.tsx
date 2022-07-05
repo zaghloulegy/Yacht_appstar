@@ -1,4 +1,4 @@
-import {View, Text, Button, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
@@ -49,7 +49,7 @@ const Vessel = (props:any) => {
   };
 
   const handleInCommand = async () => {
-    if(isAtSea) {
+    if (isAtSea) {
       const startInCommand: number = Date.now();
       try {
         const restOfVoyageString: any = await AsyncStorage.getItem(`voyage:${startTimestamp}`);
@@ -76,11 +76,11 @@ const Vessel = (props:any) => {
     }>
     <View style={{position:'absolute',top: 10,flexDirection: 'column', alignItems: 'center',justifyContent: 'center',flex: 1,}}>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Vessel: {props.route.params.mmsi}</Text>
-      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,width:'200px',overflow: 'hidden', alignItems: 'center',}}>
-        <Text style={{fontSize:25}}>{isAtSea?'Disembark':'At Sea'}</Text>
+      <TouchableOpacity onPress={handleAtSea} style={{borderWidth: 0.5, padding: 20, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10, width: '200px', overflow: 'hidden', alignItems: 'center'}}>
+        <Text style={{fontSize: 25}}>{isAtSea?'Disembark':'At Sea'}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 0.5, padding: 20,backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,width:'200px',overflow: 'hidden', alignItems: 'center'}}>
-        <Text style={{fontSize:25}}>In Command</Text>
+      <TouchableOpacity onPress={handleInCommand} style={{borderWidth: 0.5, padding: 20, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10, width: '200px', overflow: 'hidden', alignItems: 'center'}}>
+        <Text style={{fontSize: 25}}>In Command</Text>
       </TouchableOpacity>
       {atSeaError?<View style={{backgroundColor:'#E63946',}}>
         <Text style={{color:'white'}}>You must be at sea to be in command of a vessel</Text>

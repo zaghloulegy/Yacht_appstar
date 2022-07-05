@@ -37,22 +37,21 @@ const Footer = () => {
         flex: 1,
       }
     }>
-      <TouchableOpacity testID='menu' onPress={() => setMenuOpen(true)}>
+      <TouchableOpacity testID='menuID' onPress={() => setMenuOpen(true)}>
         <Ionicons name="menu" size={24} color="#A8DADC" />
       </TouchableOpacity>
-
       <Modal visible={menuOpen}>
         <View style={footer.view}>
-          <TouchableOpacity onPress={() => handleButtonPress('Your Fleet')} style={footer.touchable}>
+          <TouchableOpacity testID='yourFleet' onPress={() => handleButtonPress('Your Fleet')} style={footer.touchable}>
             <Text>Your Fleet</Text>
           </TouchableOpacity>
         </View>
-        <View style={footer.view}>
+        <View testID='yourProfile' style={footer.view}>
           <TouchableOpacity onPress={() => handleButtonPress('Profile')} style={footer.touchable}>
             <Text>Profile</Text>
           </TouchableOpacity>
         </View>
-        <View style={footer.view}>
+        <View testID='yourVoyages' style={footer.view}>
           <TouchableOpacity onPress={() => handleButtonPress('Voyages')} style={footer.touchable}>
             <Text>Voyages</Text>
           </TouchableOpacity>
@@ -62,7 +61,7 @@ const Footer = () => {
             <Text>Sign Out</Text>
           </TouchableOpacity>
         </View>
-        <View style={footer.view}>
+        <View testID='closeMenu' style={footer.view}>
           <TouchableOpacity onPress={() => setMenuOpen(false)} style={footer.touchable}>
             <Entypo name="cross" size={24} color="black" />
           </TouchableOpacity>
@@ -74,10 +73,10 @@ const Footer = () => {
 
 const footer = StyleSheet.create({
   view: {
-    backgroundColor:'#1D3557', 
-    padding:50,
-    marginBottom:-10,
-    height:"190px",
+    backgroundColor: '#1D3557',
+    padding: 50,
+    marginBottom: -10,
+    height: '190px',
   },
   touchable: {
     backgroundColor: '#A8DADC',
