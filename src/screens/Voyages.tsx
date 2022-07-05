@@ -90,6 +90,7 @@ const Voyages = () => {
         backgroundColor: '#1D3557'
       }
     }>
+    <View style={{position:'absolute',top: 10,flexDirection: 'column', alignItems: 'center',justifyContent: 'center',flex: 1,}}>
       <Text style={{color:'#F1FAEE',fontWeight:'600',fontSize: 30}}>Voyages</Text>
 
       <TouchableOpacity onPress={() => navigation.navigate('Nav Log')} style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}}>
@@ -106,10 +107,18 @@ const Voyages = () => {
         const parsedEnd = `${convertTime(individualEnd)}`.replace(/\w{3}\+.+\(.+\)$/, '');
         
         return (voyageData?<View style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={voyage[0]}>
-          <Text key={voyage[0]}>Vessel:{voyageData.name} Night hours:{parsedData.voyageReport.nightHours} hours Voyage Distance:{parsedData.voyageReport.voyageDistance}Nm Days at Sea:{parsedData.voyageReport.daysAtSea} days Days in Command:{parsedData.voyageReport.daysInCommand} days {parsedStart} {parsedEnd}</Text>
+          <Text key={voyage[0]}>Vessel: {voyageData.name}</Text>
+          <Text key={voyage[0]}>Start: {parsedStart}</Text>
+          <Text key={voyage[0]}>End: {parsedEnd}</Text>
+          <Text key={voyage[0]}>Night hours: {parsedData.voyageReport.nightHours}h</Text>
+          <Text key={voyage[0]}>Voyage Distance: {parsedData.voyageReport.voyageDistance}Nm</Text>
+          <Text key={voyage[0]}>Days at Sea: {parsedData.voyageReport.daysAtSea} days</Text>
+          <Text key={voyage[0]}>Days in Command: {parsedData.voyageReport.daysInCommand} days</Text>
         </View>:
           <View style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={voyage[0]}>
-          <Text key={voyage[0]}>{individualMMSI} {parsedStart} {parsedEnd}</Text>
+          <Text key={voyage[0]}>MMSI: {individualMMSI}</Text>
+          <Text key={voyage[0]}>Start: {parsedStart}</Text>
+          <Text key={voyage[0]}>End: {parsedEnd}</Text>
           <TouchableOpacity style={{backgroundColor:'red'}} onPress={() => handleAPICall(voyage)}>
             <Text>Create report</Text>
           </TouchableOpacity>
@@ -117,7 +126,11 @@ const Voyages = () => {
         )
       }):<></>}
       <Button onPress={dummyFunc} title="dummy create"></Button>
-      <Footer />
+      </View>
+      <View style={{position:'absolute',bottom:10,}}>
+        <Footer />
+      </View>
+      
     </View>
   );
 };
