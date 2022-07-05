@@ -6407,6 +6407,13 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
   "version" "3.1.0"
 
+"cypress-react-selector@^2.3.20":
+  "integrity" "sha512-S5msxVyk1TgtA//V/uVrb/kyWH4yRSVkBReaCDiG0OVT5DNhNTJwXkWeTn79zkS31Gtqckaq3Uq/Ap/oHjiblg=="
+  "resolved" "https://registry.npmjs.org/cypress-react-selector/-/cypress-react-selector-2.3.20.tgz"
+  "version" "2.3.20"
+  dependencies:
+    "resq" "1.10.2"
+
 "cypress@^10.3.0":
   "integrity" "sha512-txkQWKzvBVnWdCuKs5Xc08gjpO89W2Dom2wpZgT9zWZT5jXxqPIxqP/NC1YArtkpmp3fN5HW8aDjYBizHLUFvg=="
   "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.3.0.tgz"
@@ -7304,6 +7311,11 @@
   "integrity" "sha512-qwaScUgUGBYeDNRnbc/KyllVU88Jk1pRHPStuF/lO7B0/RTRLj7U0lkdTAutlBblY08rwZDff6tNU9cjv6j//Q=="
   "resolved" "https://registry.npmjs.org/fast-base64-decode/-/fast-base64-decode-1.0.0.tgz"
   "version" "1.0.0"
+
+"fast-deep-equal@^2.0.1":
+  "integrity" "sha512-bCK/2Z4zLidyB4ReuIsvALH6w31YfAQDmXMqMx6FyfHqvBxtjC0eRumeSu4Bs3XtXwpyIywtSTrVT99BxY1f9w=="
+  "resolved" "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz"
+  "version" "2.0.1"
 
 "fast-deep-equal@^3.1.1", "fast-deep-equal@^3.1.3":
   "integrity" "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q=="
@@ -11702,6 +11714,13 @@
   "version" "1.0.2"
   dependencies:
     "lowercase-keys" "^1.0.0"
+
+"resq@1.10.2":
+  "integrity" "sha512-HmgVS3j+FLrEDBTDYysPdPVF9/hioDMJ/otOiQDKqk77YfZeeLOj0qi34yObumcud1gBpk+wpBTEg4kMicD++A=="
+  "resolved" "https://registry.npmjs.org/resq/-/resq-1.10.2.tgz"
+  "version" "1.10.2"
+  dependencies:
+    "fast-deep-equal" "^2.0.1"
 
 "restore-cursor@^2.0.0":
   "integrity" "sha512-6IzJLuGi4+R14vwagDHX+JrXmPVtPpn4mffDJ1UdR7/Edm87fl6yi8mMBIVvFtJaNTUvjughmW4hwLhRG7gC1Q=="

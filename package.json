@@ -23,6 +23,7 @@
     "@turf/distance": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "aws-amplify": "^4.3.26",
+    "cypress-react-selector": "^2.3.20",
     "axios": "^0.27.2",
     "babel-plugin-inline-dotenv": "^1.7.0",
     "dotenv": "^16.0.1",
