@@ -7018,15 +7018,120 @@ describe('getNightHours', () => {
     expect(typeof getNightHours(testDataIOI)).toBe('number');
     expect(typeof getNightHours(testDataODD)).toBe('number');
   });
-  test('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => {
-    // const testDataDUMMY = {
-    //   data: {
-    //     positions: [
-    //       {
-    //         'lat': 20.29186, 'lon': 38.27084, 'last_position_UTC': '2022-06-28T19:00:00Z', 'last_position_epoch': 00000000},
-    //     ],
-    //   },
-
-    // };
+  test.only('should return the number of hours sailing in darkness rounded up to the nearest whole number', () => {
+    const testDataDUMMY = {
+      data: {
+        positions: [
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T11:00:00Z',
+            'last_position_epoch': 1657101600,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T10:00:00Z',
+            'last_position_epoch': 1657098000,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T09:00:00Z',
+            'last_position_epoch': 1657094400,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T08:00:00Z',
+            'last_position_epoch': 1657090800,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T07:00:00Z',
+            'last_position_epoch': 1657087200,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T06:00:00Z',
+            'last_position_epoch': 1657083600,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T05:00:00Z',
+            'last_position_epoch': 1657080000,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T04:00:00Z',
+            'last_position_epoch': 1657076400,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T03:00:00Z',
+            'last_position_epoch': 1657072800,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T02:00:00Z',
+            'last_position_epoch': 1657069200,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T01:00:00Z',
+            'last_position_epoch': 1657065600,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-06T00:00:00Z',
+            'last_position_epoch': 1657062000,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-05T23:00:00Z',
+            'last_position_epoch': 1657058400,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-05T22:00:00Z',
+            'last_position_epoch': 1657054800,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-05T21:00:00Z',
+            'last_position_epoch': 1657051200,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-05T20:00:00Z',
+            'last_position_epoch': 1657047600,
+          },
+          {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-05T19:00:00Z',
+            'last_position_epoch': 1657044000,
+          }, {
+            'lat': 20.29186,
+            'lon': 38.27084,
+            'last_position_UTC': '2022-07-05T18:00:00Z',
+            'last_position_epoch': 1657040400,
+          },
+        ],
+      },
+    };
+    expect(typeof getNightHours(testDataDUMMY)).toBe('number');
   });
 });
