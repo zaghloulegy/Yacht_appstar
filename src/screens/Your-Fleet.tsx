@@ -63,20 +63,24 @@ const YourFleet = (user: any) => {
         return (
           <View key={vessel[0]}>
             <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
-              <Text style={{padding: 26, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center', margin: 10, height: '100%', textAlign: 'center', width: '200px'}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
+              <Text style={{padding: 26, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center', margin: 10, height: '100%', textAlign: 'center', width: '200px',fontSize:20}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:100, width:24,}} onPress={() => removeVessel(individualMMSI)}>
+            <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:100, width:24, margin:-61, marginLeft:30,marginBottom:30, }} onPress={() => removeVessel(individualMMSI)}>
                 <Entypo name="cross" size={24} color="#1D3557" />
             </TouchableOpacity>
           </View>
         );
       }):<></>}
 
-      <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:100}} onPress={() => navigation.navigate('Add Vessel', {'addVessel':setAddVessel})}>
+      <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:100,marginTop:40}} onPress={() => navigation.navigate('Add Vessel', {'addVessel':setAddVessel})}>
         <Entypo name="plus" size={26} color="#1D3557" />
       </TouchableOpacity>
 
-      <Button title="Delete" onPress={clearData}></Button>
+      <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:10, margin:20, padding:20, }}>
+        <Text  onPress={clearData}>Delete</Text>
+      </TouchableOpacity>
+
+      
       </View>
       <View style={{position:'absolute',bottom:10,}}>
         <Footer />
