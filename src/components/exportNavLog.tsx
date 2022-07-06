@@ -24,7 +24,6 @@ const ExportNavLog = (props: any) => {
     </header>
     ${voyages?voyages.map((voyage:any) => {
   const parsedData = JSON.parse(voyage[1]);
-  console.log(parsedData);
   return (<ul key={voyage[0]}>
     {parsedData.voyageData.positions.map((position:any) => {
       return (

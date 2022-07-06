@@ -76,9 +76,9 @@ const YourFleet = (user: any) => {
           <Entypo name="plus" size={26} color="#1D3557" />
         </TouchableOpacity>
 
-        <TouchableOpacity style={{backgroundColor: '#A8DADC', borderRadius: 10, margin: 20, padding: 20}}>
+        {/* <TouchableOpacity style={{backgroundColor: '#A8DADC', borderRadius: 10, margin: 20, padding: 20}}>
           <Text onPress={clearData}>Delete</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
 
       </View>
