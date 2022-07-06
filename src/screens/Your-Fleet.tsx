@@ -61,7 +61,7 @@ const YourFleet = (user: any) => {
           const individualMMSI = JSON.parse(vessel[1]).mmsi;
           const individualName = JSON.parse(vessel[1]).name;
           return (
-            <View key={vessel[0]}>
+            <View testID='vesAt' key={vessel[0]}>
               <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
                 <Text style={{padding: 26, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center', margin: 10, height: '100%', textAlign: 'center', width: '200px', fontSize: 20}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
               </TouchableOpacity>
@@ -72,14 +72,13 @@ const YourFleet = (user: any) => {
           );
         }):<></>}
 
-        <TouchableOpacity style={{backgroundColor: '#A8DADC', borderRadius: 100, marginTop: 40}} onPress={() => navigation.navigate('Add Vessel', {'addVessel': setAddVessel})}>
+        <TouchableOpacity testID='addVessel' style={{backgroundColor: '#A8DADC', borderRadius: 100, marginTop: 40}} onPress={() => navigation.navigate('Add Vessel', {'addVessel': setAddVessel})}>
           <Entypo name="plus" size={26} color="#1D3557" />
         </TouchableOpacity>
 
         {/* <TouchableOpacity style={{backgroundColor: '#A8DADC', borderRadius: 10, margin: 20, padding: 20}}>
           <Text onPress={clearData}>Delete</Text>
         </TouchableOpacity> */}
-
 
       </View>
       <View style={{position: 'absolute', bottom: 10}}>

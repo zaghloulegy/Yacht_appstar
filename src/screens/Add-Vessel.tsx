@@ -47,18 +47,18 @@ const AddVessel = (props: any) => {
         backgroundColor: '#1D3557',
       }
     }>
-    <View style={{position:'absolute',top: 10,flexDirection: 'column', alignItems: 'center',justifyContent: 'center',flex: 1,}}>
-      <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Add Vessel</Text>
+      <View style={{position: 'absolute', top: 10, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1}}>
+        <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Add Vessel</Text>
 
-      <TextInput testID='MMSI-input' onSubmitEditing={handleAddVessel} style={{backgroundColor: '#F1FAEE', height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10}} placeholder='MMSI Number' placeholderTextColor="black"/>
-      {addVesselsError?<View style={{backgroundColor: '#E63946'}}>
-        <Text style={{color: 'white'}}>You must provide a valid mmsi</Text>
-      </View>:<></>}
+        <TextInput testID='MMSI-input' onSubmitEditing={handleAddVessel} style={{backgroundColor: '#F1FAEE', height: 40,
+          margin: 12,
+          borderWidth: 1,
+          padding: 10}} placeholder='MMSI Number' placeholderTextColor="black"/>
+        {addVesselsError?<View style={{backgroundColor: '#E63946'}}>
+          <Text style={{color: 'white'}}>You must provide a valid mmsi</Text>
+        </View>:<></>}
       </View>
-      <View style={{position:'absolute',bottom:10,}}>
+      <View style={{position: 'absolute', bottom: 10}}>
         <Footer />
       </View>
     </View>
