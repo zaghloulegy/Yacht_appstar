@@ -123,7 +123,7 @@ const Voyages = () => {
             <Text>Voyage Distance: {parsedData.voyageReport.voyageDistance}Nm</Text>
             <Text>Days at Sea: {parsedData.voyageReport.daysAtSea} days</Text>
             <Text>Days in Command: {parsedData.voyageReport.daysInCommand} days</Text>
-            <TouchableOpacity style={{borderRadius: 100, width: 24}} onPress={() => removeVoyage(individualStart)}>
+            <TouchableOpacity style={{borderRadius: 100, width: 24,marginLeft: '43%',}} onPress={() => removeVoyage(individualStart)}>
               <Entypo name="cross" size={24} color="#E63946'" />
             </TouchableOpacity>
           </View>:
@@ -133,6 +133,9 @@ const Voyages = () => {
             <Text style={{fontSize: 17}}>End: {parsedEnd}</Text>
             <TouchableOpacity style={{backgroundColor: 'red', padding: 10, borderRadius: 10, marginTop: 10}} onPress={() => handleAPICall(voyage)}>
               <Text style={{fontSize: 17, textAlign: 'center', color: 'white'}}>Create Report</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{borderRadius: 100, width: 24,marginLeft: '45%',}} onPress={() => removeVoyage(individualStart)}>
+              <Entypo name="cross" size={24} color="#E63946'" />
             </TouchableOpacity>
           </View>
           );
