@@ -47,6 +47,7 @@ const YourFleet = (user: any) => {
         backgroundColor: '#1D3557',
       }
     }>
+      <View style={{position:'absolute',top: 10,flexDirection: 'column', alignItems: 'center',justifyContent: 'center',flex: 1,}}>
       <Text style={{color: '#F1FAEE', fontWeight: '600', fontSize: 30}}>Your Fleet</Text>
 
       {vessels?vessels.map((vessel: any) => {
@@ -60,12 +61,16 @@ const YourFleet = (user: any) => {
           </View>
         );
       }):<></>}
-      <TouchableOpacity testID='addVessel' onPress={() => navigation.navigate('Add Vessel', {'addVessel': setAddVessel})}>
-        <Entypo name="plus" size={24} color="#A8DADC" />
+
+      <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:100}} onPress={() => navigation.navigate('Add Vessel', {'addVessel':setAddVessel})}>
+        <Entypo name="plus" size={26} color="#1D3557" />
       </TouchableOpacity>
 
       <Button title="Delete" onPress={clearData}></Button>
-      <Footer/>
+      </View>
+      <View style={{position:'absolute',bottom:10,}}>
+        <Footer />
+      </View>
     </View>
   );
 };
