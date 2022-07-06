@@ -40,25 +40,25 @@ const Footer = () => {
       <TouchableOpacity testID='menuID' onPress={() => setMenuOpen(true)}>
         <Ionicons name="menu" size={24} color="#A8DADC" />
       </TouchableOpacity>
-      <Modal visible={menuOpen}>
+      <Modal animationType="slide" visible={menuOpen}>
         <View style={footer.view}>
           <TouchableOpacity testID='yourFleet' onPress={() => handleButtonPress('Your Fleet')} style={footer.touchable}>
-            <Text>Your Fleet</Text>
+            <Text style={{fontSize:30}}>Your Fleet</Text>
           </TouchableOpacity>
         </View>
         <View testID='yourProfile' style={footer.view}>
           <TouchableOpacity onPress={() => handleButtonPress('Profile')} style={footer.touchable}>
-            <Text>Profile</Text>
+            <Text style={{fontSize:30}}>Profile</Text>
           </TouchableOpacity>
         </View>
         <View testID='yourVoyages' style={footer.view}>
           <TouchableOpacity onPress={() => handleButtonPress('Voyages')} style={footer.touchable}>
-            <Text>Voyages</Text>
+            <Text style={{fontSize:30}}>Voyages</Text>
           </TouchableOpacity>
         </View>
         <View style={footer.view}>
           <TouchableOpacity testID='signout' onPress={() => handleSignOut()} style={footer.touchable}>
-            <Text>Sign Out</Text>
+            <Text style={{fontSize:30}}>Sign Out</Text>
           </TouchableOpacity>
         </View>
         <View testID='closeMenu' style={footer.view}>
