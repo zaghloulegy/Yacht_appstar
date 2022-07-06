@@ -6481,6 +6481,11 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
   "version" "3.1.0"
 
+"cypress-localstorage-commands@^2.1.0":
+  "integrity" "sha512-DIJLCIh+CcKulAxMVEng6EhpW691emHRqFUD4dK2HUn86Xzt3ABL3SkmxW4rXgvQt697nTDpZC+jo5K5BwndrQ=="
+  "resolved" "https://registry.npmjs.org/cypress-localstorage-commands/-/cypress-localstorage-commands-2.1.0.tgz"
+  "version" "2.1.0"
+
 "cypress-react-selector@^2.3.20":
   "integrity" "sha512-S5msxVyk1TgtA//V/uVrb/kyWH4yRSVkBReaCDiG0OVT5DNhNTJwXkWeTn79zkS31Gtqckaq3Uq/Ap/oHjiblg=="
   "resolved" "https://registry.npmjs.org/cypress-react-selector/-/cypress-react-selector-2.3.20.tgz"

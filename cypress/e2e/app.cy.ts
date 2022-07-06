@@ -21,7 +21,7 @@ describe('Login-Logout', () => {
   });
 });
 
-describe('Add Vessel tou you Fleet', () => {
+describe.only('Add Vessel tou your Fleet', () => {
   it('should add a vessel to your fleet given the 9 digit MMSI number', () => {
     cy.visit('/');
     cy.getBySel('"sign-in"')
@@ -43,7 +43,7 @@ describe('Add Vessel tou you Fleet', () => {
   });
 });
 
-describe.only('Menu', () => {
+describe('Menu', () => {
   it('checks menu options', () => {
     cy.visit('/');
     cy.getBySel('"sign-in"')
@@ -66,6 +66,29 @@ describe.only('Menu', () => {
     cy.contains('Sign Out')
         .should('be.visible');
     cy.getBySel('"closeMenu"')
+        .click();
+  });
+});
+
+describe('User in command', () => {
+  it('a user can record time at sea being in command', () => {
+    cy.visit('/');
+    cy.getBySel('"sign-in"')
+        .click();
+    cy.get('[placeholder="Email"]')
+        .type(Cypress.env('TEST_USER_EMAIL'));
+    cy.get('[placeholder="Password"]')
+        .type(Cypress.env('TEST_USER_PASSWORD'));
+    cy.get('[type="submit"]')
+        .click();
+
+    cy.addDefaultVessels();
+    cy.getBySel('"vesAt"')
+        .first()
+        .click();
+    cy.getBySel('"atSea"')
+        .click();
+    cy.getBySel('"disembark"')
         .click();
   });
 });
