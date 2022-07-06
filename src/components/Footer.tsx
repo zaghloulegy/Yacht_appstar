@@ -40,7 +40,7 @@ const Footer = () => {
       <TouchableOpacity testID='menuID' onPress={() => setMenuOpen(true)}>
         <Ionicons name="menu" size={24} color="#A8DADC" />
       </TouchableOpacity>
-      <Modal visible={menuOpen}>
+      <Modal animationType="slide" visible={menuOpen}>
         <View style={footer.view}>
           <TouchableOpacity testID='yourFleet' onPress={() => handleButtonPress('Your Fleet')} style={footer.touchable}>
             <Text>Your Fleet</Text>
