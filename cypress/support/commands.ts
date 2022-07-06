@@ -46,16 +46,16 @@ Cypress.Commands.add('getBySel', (selector, ...args) => {
 });
 
 Cypress.Commands.add('addDefaultVessels', () => {
-  const VESSEL_ONE = '227286000';
+  // const VESSEL_ONE = '227286000';
   const VESSEL_TWO = '227286034';
   const VESSEL_THREE = '457286000';
 
-  cy.wrap([VESSEL_ONE, VESSEL_TWO, VESSEL_THREE])
+  cy.wrap([VESSEL_TWO, VESSEL_THREE])
       .each((i) => {
-        cy.get('[data-testid=addVessel', {log: false})
+        cy.get('[data-testid=addVessel]', {log: false})
             .click();
         cy.wait(1000);
-        cy.get('[data-testid=MMSI-input')
+        cy.get('[data-testid=MMSI-input]')
             .type(`${i}{enter}`, {log: false});
         cy.wait(3000);
       });
