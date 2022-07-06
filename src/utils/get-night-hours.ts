@@ -25,8 +25,6 @@ const getNightHours = (voyageData: any) => {
 
   const positions: positionObj[] = voyageData.data.positions;
 
-  console.log(voyageData, 'ZZZZZZZZZZZZZZZZZ')
-
   interface DaysAtSeaObj {
     [key: string]: dayAtSea;
   }
@@ -73,15 +71,12 @@ const getNightHours = (voyageData: any) => {
         if ( beforeSRLength ) {
           nightHoursAtSea += hoursCalc(daysAtSea[day].timesBeforeSunRISE[beforeSRLength-1], daysAtSea[day].timesBeforeSunRISE[0]);
         };
-        console.log(nightHoursAtSea)
         if ( afterSSLength ) {
           nightHoursAtSea += hoursCalc(daysAtSea[day].timesAfterSunSET[afterSSLength-1], daysAtSea[day].timesAfterSunSET[0]);
         };
       }
     }
   }
-  console.log('positions', positions)
-  console.log('daysAtSea: ', daysAtSea);
   return Math.abs(nightHoursAtSea).toFixed(1);
 };
 
