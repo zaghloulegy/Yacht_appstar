@@ -127,17 +127,19 @@ const Voyages = () => {
             <Entypo name="cross" size={24} color="#E63946'" />
           </TouchableOpacity>
         </View>:
-          <View style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={voyage[0]}>
-          <Text>MMSI: {individualMMSI}</Text>
-          <Text>Start: {parsedStart}</Text>
-          <Text>End: {parsedEnd}</Text>
-          <TouchableOpacity style={{backgroundColor:'red'}} onPress={() => handleAPICall(voyage)}>
-            <Text>Create Report</Text>
+          <View style={{borderWidth: 1, padding: 20,backgroundColor: '#A8DADC', borderRadius: 10, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15,elevation: 2,marginLeft: 5, marginRight: 5, marginTop: 10,}} key={voyage[0]}>
+          <Text style={{fontSize:17}}>MMSI: {individualMMSI}</Text>
+          <Text style={{fontSize:17}}>Start: {parsedStart}</Text>
+          <Text style={{fontSize:17}}>End: {parsedEnd}</Text>
+          <TouchableOpacity style={{backgroundColor:'red',padding:10,borderRadius:10,marginTop:10}} onPress={() => handleAPICall(voyage)}>
+            <Text style={{fontSize:17,textAlign:'center',color:'white',}}>Create Report</Text>
           </TouchableOpacity>
           </View>
         );
       }):<></>}
-      <Button onPress={dummyFunc} title="dummy create"></Button>
+      <TouchableOpacity style={{backgroundColor:'#A8DADC',padding:10,borderRadius:10,marginTop:10}}>
+      <Text onPress={dummyFunc} style={{fontSize:17,textAlign:'center',color:'black',}}>dummy create</Text>
+      </TouchableOpacity>
       </View>
       <View style={{position:'absolute',bottom:10,}}>
         <Footer />
