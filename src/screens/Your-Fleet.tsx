@@ -15,11 +15,18 @@ type StackParamList = {
 let initialRenderVessels: any;
 
 const YourFleet = (user: any) => {
-  // console.log(user);
-
   const navigation = useNavigation<StackParamList>();
   const [vessels, setVessels] = useState(initialRenderVessels);
   const [addVessel, setAddVessel] = useState(false);
+
+  const removeVessel = async (mmsi: any) => {
+      setAddVessel(true);
+    try {
+      await AsyncStorage.removeItem(`vessel:${mmsi}`);
+    } catch (err) {
+      console.log('err: ', err);
+    }
+  };
 
   useEffect(() => {
     const renderVessels = async () => {
@@ -57,6 +64,9 @@ const YourFleet = (user: any) => {
           <View key={vessel[0]}>
             <TouchableOpacity key={vessel[0]} onPress={() => navigation.navigate('Vessel', {'mmsi': individualMMSI})}>
               <Text style={{padding: 26, backgroundColor: '#A8DADC', borderRadius: 100, borderColor: 'black', alignItems: 'center', margin: 10, height: '100%', textAlign: 'center', width: '200px'}} key={vessel[0]}>{individualName?individualName:individualMMSI}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{backgroundColor:"#A8DADC",borderRadius:100, width:24,}} onPress={() => removeVessel(individualMMSI)}>
+                <Entypo name="cross" size={24} color="#1D3557" />
             </TouchableOpacity>
           </View>
         );

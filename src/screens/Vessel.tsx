@@ -85,7 +85,7 @@ const Vessel = (props:any) => {
       {atSeaError?<View style={{backgroundColor:'#E63946',}}>
         <Text style={{color:'white'}}>You must be at sea to be in command of a vessel</Text>
       </View>:<></>}
-      </View>
+    </View>
       {isAtSea?<></>:<View style={{position:'absolute',bottom:10,}}>
         <Footer />
       </View>}
