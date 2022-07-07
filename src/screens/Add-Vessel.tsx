@@ -55,7 +55,7 @@ const AddVessel = (props: any) => {
           borderWidth: 1,
           padding: 10}} placeholder='MMSI Number' placeholderTextColor="black"/>
         {addVesselsError?<View style={{backgroundColor: '#E63946'}}>
-          <Text style={{color: 'white'}}>You must provide a valid mmsi</Text>
+          <Text style={{color: 'white', padding: 10, fontSize:15}}>You must provide a valid mmsi</Text>
         </View>:<></>}
       </View>
       <View testID='menuID' style={{position: 'absolute', bottom: 10}}>
