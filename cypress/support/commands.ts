@@ -4,6 +4,7 @@ declare namespace Cypress {
     getBySel(selector: string, ...args: any): Chainable<any>;
     addDefaultVessels(): Chainable<any>;
     signIn(): Chainable<any>;
+    signOut(): Chainable<any>;
   }
 }
 
@@ -39,6 +40,14 @@ Cypress.Commands.add('addDefaultVessels', () => {
             .type(`${i}{enter}`, {log: false});
         cy.wait(3000);
       });
+});
+
+Cypress.Commands.add('signOut', () => {
+  cy.getBySel('"menuID"')
+      .click();
+  cy.wait(2000);
+  cy.getBySel('"signout"')
+      .click();
 });
 
 // ***********************************************

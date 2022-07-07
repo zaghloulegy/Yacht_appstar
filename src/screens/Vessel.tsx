@@ -87,7 +87,7 @@ const Vessel = (props:any) => {
           <Text style={{color: 'white'}}>You must be at sea to be in command of a vessel</Text>
         </View>:<></>}
       </View>
-      {isAtSea?<></>:<View style={{position: 'absolute', bottom: 10}}>
+      {isAtSea?null:<View testID='menuID' style={{position: 'absolute', bottom: 10}}>
         <Footer />
       </View>}
     </View>

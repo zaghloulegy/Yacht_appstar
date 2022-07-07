@@ -37,7 +37,7 @@ const Footer = () => {
         flex: 1,
       }
     }>
-      <TouchableOpacity testID='menuID' onPress={() => setMenuOpen(true)}>
+      <TouchableOpacity onPress={() => setMenuOpen(true)}>
         <Ionicons name="menu" size={24} color="#A8DADC" />
       </TouchableOpacity>
       <Modal animationType="slide" visible={menuOpen}>

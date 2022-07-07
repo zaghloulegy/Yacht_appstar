@@ -80,7 +80,7 @@ const YourFleet = (user: any) => {
         </TouchableOpacity> */}
 
       </View>
-      <View style={{position: 'absolute', bottom: 10}}>
+      <View testID='menuID' style={{position: 'absolute', bottom: 10}}>
         <Footer />
       </View>
     </View>
