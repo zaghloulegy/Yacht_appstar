@@ -58,7 +58,7 @@ const AddVessel = (props: any) => {
           <Text style={{color: 'white', padding: 10, fontSize:15}}>You must provide a valid mmsi</Text>
         </View>:<></>}
       </View>
-      <View style={{position: 'absolute', bottom: 10}}>
+      <View testID='menuID' style={{position: 'absolute', bottom: 10}}>
         <Footer />
       </View>
     </View>

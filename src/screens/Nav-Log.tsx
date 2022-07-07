@@ -60,7 +60,7 @@ const NavLog = () => {
 
         <ExportNavLog voyages={voyages} totalDistance={totalDistance} totalNighthours={totalNighthours} totalInCommand={totalInCommand} totalDaysAtSea={totalDaysAtSea}/>
 
-        <View style={{width: '95%', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#A8DADC', margin: 4, padding:4}}>
+        <View style={{width: '95%', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#A8DADC', margin: 4, padding: 4}}>
           <Text style={{borderColor: '#F1FAEE'}}>MMSI</Text>
           <Text>Heading</Text>
           <Text>Course</Text>
@@ -76,7 +76,7 @@ const NavLog = () => {
             return (<View key={voyage[0]}>
               {parsedData.voyageData.positions.map((position:any) => {
                 return (
-                  <View style={{flexShrink: 7, width: '95%', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#A8DADC', margin: 4, padding:6}} key={position.last_position_UTC}>
+                  <View style={{flexShrink: 7, width: '95%', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#A8DADC', margin: 4, padding: 6}} key={position.last_position_UTC}>
                     <Text style={{fontSize: 10}}>{parsedData.mmsi}</Text>
                     <Text style={{fontSize: 10}}>{position.heading}</Text>
                     <Text style={{fontSize: 10}}>{position.course}</Text>
@@ -91,7 +91,7 @@ const NavLog = () => {
         </ScrollView>
 
       </View>
-      <View style={{position: 'absolute', bottom: 10}}>
+      <View testID='menuID' style={{position: 'absolute', bottom: 10}}>
         <Footer />
       </View>
     </View>
