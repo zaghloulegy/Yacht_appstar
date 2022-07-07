@@ -6,6 +6,8 @@ import {Entypo} from '@expo/vector-icons';
 import {withAuthenticator} from '@aws-amplify/ui-react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect, useState} from 'react';
+// import clearData from '../utils/clear-data';
+
 
 type StackParamList = {
   navigate: any;
