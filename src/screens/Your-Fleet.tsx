@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Button} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
@@ -6,7 +6,6 @@ import {Entypo} from '@expo/vector-icons';
 import {withAuthenticator} from '@aws-amplify/ui-react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect, useState} from 'react';
-import clearData from '../utils/clear-data';
 
 type StackParamList = {
   navigate: any;
@@ -81,7 +80,7 @@ const YourFleet = (user: any) => {
         </TouchableOpacity> */}
 
       </View>
-      <View style={{position: 'absolute', bottom: 10}}>
+      <View testID='menuID' style={{position: 'absolute', bottom: 10}}>
         <Footer />
       </View>
     </View>

@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import convertTime from '../utils/timeconvert';
-import APIConvertTime from '../utils/apiTimeConvert';
+import apiConvertTime from '../utils/apiTimeConvert';
 import {vesselAPICall} from '../utils/api';
 import voyageTotalDistance from '../utils/voyageTotalDistance';
 import daysDifference from '../utils/daysCalc';
@@ -32,7 +32,7 @@ const Voyages = () => {
     const endInCommand = parsedData.relinquish_command;
 
     try {
-      const APIData:any = await vesselAPICall(individualMMSI, APIConvertTime(individualStart), APIConvertTime(individualEnd));
+      const APIData:any = await vesselAPICall(individualMMSI, apiConvertTime(individualStart), apiConvertTime(individualEnd));
       const completedVoyageString: any = await AsyncStorage.getItem(`voyage:${individualStart}`);
       const completedVoyage = JSON.parse(completedVoyageString);
       completedVoyage.voyageData = APIData.data.data;
@@ -115,7 +115,7 @@ const Voyages = () => {
           const parsedStart = `${convertTime(individualStart)}`.replace(/\w{3}\+.+\(.+\)$/, '');
           const parsedEnd = `${convertTime(individualEnd)}`.replace(/\w{3}\+.+\(.+\)$/, '');
 
-          return (voyageData?<View style={{borderWidth: 1, padding: 20, backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10}} key={voyage[0]}>
+          return (voyageData?<View testID='voyageInfo' style={{borderWidth: 1, padding: 20, backgroundColor: '#A8DADC', borderRadius: 2, borderColor: '#black', borderBottomWidth: 0, shadowColor: 'rgba(1,1,0,0.1)', shadowOffset: {width: 3, height: 20}, shadowOpacity: 0.8, shadowRadius: 15, elevation: 2, marginLeft: 5, marginRight: 5, marginTop: 10}} key={voyage[0]}>
             <Text>Vessel: {voyageData.name}</Text>
             <Text>Start: {parsedStart}</Text>
             <Text>End: {parsedEnd}</Text>
@@ -123,7 +123,7 @@ const Voyages = () => {
             <Text>Voyage Distance: {parsedData.voyageReport.voyageDistance}Nm</Text>
             <Text>Days at Sea: {parsedData.voyageReport.daysAtSea} days</Text>
             <Text>Days in Command: {parsedData.voyageReport.daysInCommand} days</Text>
-            <TouchableOpacity style={{borderRadius: 100, width: 24,marginLeft: '43%',}} onPress={() => removeVoyage(individualStart)}>
+            <TouchableOpacity style={{borderRadius: 100, width: 24, marginLeft: '43%'}} onPress={() => removeVoyage(individualStart)}>
               <Entypo name="cross" size={24} color="#E63946'" />
             </TouchableOpacity>
           </View>:
@@ -132,9 +132,9 @@ const Voyages = () => {
             <Text style={{fontSize: 17}}>Start: {parsedStart}</Text>
             <Text style={{fontSize: 17}}>End: {parsedEnd}</Text>
             <TouchableOpacity style={{backgroundColor: 'red', padding: 10, borderRadius: 10, marginTop: 10}} onPress={() => handleAPICall(voyage)}>
-              <Text style={{fontSize: 17, textAlign: 'center', color: 'white'}}>Create Report</Text>
+              <Text testID='createReport' style={{fontSize: 17, textAlign: 'center', color: 'white'}}>Create Report</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{borderRadius: 100, width: 24,marginLeft: '45%',}} onPress={() => removeVoyage(individualStart)}>
+            <TouchableOpacity style={{borderRadius: 100, width: 24, marginLeft: '45%'}} onPress={() => removeVoyage(individualStart)}>
               <Entypo name="cross" size={24} color="#E63946'" />
             </TouchableOpacity>
           </View>
